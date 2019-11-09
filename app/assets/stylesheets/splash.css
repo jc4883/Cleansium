@@ -1,0 +1,13 @@
+nav.splash-page > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background-color: #ddd;
+}
+
+nav.login-signup > * {
+  padding: 10px;
+  text-decoration: none;
+  color: green;
+}

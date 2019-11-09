@@ -1,58 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Greeting from '../greeting/greeting'
-import { Redirect } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import Greeting from "../greeting/greeting";
+import { Redirect } from "react-router-dom";
 class Splash extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {signup: false, login: false};
+    this.state = { signup: false, login: false };
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   handleSignup() {
-    this.setState({signup: true});
+    this.setState({ signup: true });
   }
 
   handleLogin() {
-    this.setState({login: true})
+    this.setState({ login: true });
   }
 
   render() {
-    debugger
     if (this.state.signup) {
-      return <Redirect to="/signup"/>
+      return <Redirect to="/signup" />;
     } else if (this.state.login) {
-      return <Redirect to="/login"/>
+      return <Redirect to="/login" />;
     } else {
       return (
-        <nav className="splash-page" >
+        <nav className="splash-page">
           <header>
             <div className="logo">
               <h1>Title</h1>
             </div>
-            <Greeting/>
+            <Greeting />
           </header>
-          <img src={window.bonsai_background}/>
-          <div className="root-page-text" >
-
-
-
+          {/* <img src={window.bonsai_background} /> */}
+          {/* <div className="root-page-text">
             <button onClick={this.handleSignup}>Give it a Try</button>
-          </div>
-          
+          </div> */}
         </nav>
-      )
+      );
     }
   }
 }
-
 
 export default Splash;
