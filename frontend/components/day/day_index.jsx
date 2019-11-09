@@ -1,9 +1,8 @@
-import React from 'react';
-import NavBar from '../nav_bar/nav_bar';
-
+import React from "react";
+import NavBar from "../nav_bar/nav_bar";
+import { Link } from "react-router-dom";
 
 class DayIndex extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
@@ -16,10 +15,10 @@ class DayIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchDays();  
+    this.props.fetchDays();
   }
 
-  handleLogout(){
+  handleLogout() {
     this.props.logout();
   }
 
@@ -33,54 +32,47 @@ class DayIndex extends React.Component {
   showDays() {
     let dayList = [];
     for (let i = 0; i < 4; i++) {
-      
       let found = false;
-      for (let j = 0; j < Object.values(this.props.days).length; i++) {        
-        debugger
+      for (let j = 0; j < Object.values(this.props.days).length; i++) {
+        debugger;
         if (i === this.props.days[j].day_index) {
-          dayList.push(<li>WE FOUND ONE!</li>)
+          dayList.push(<li>WE FOUND ONE!</li>);
           found = true;
           break;
-        } 
+        }
       }
       if (found === false) {
-        dayList.push(<li>THIS IS AN LI</li>)
+        dayList.push(<li>THIS IS AN LI</li>);
       }
     }
-    debugger
+    debugger;
     return dayList;
   }
 
   renderDays() {
-      return this.showDays().map((ele) => {
-          return (
-              ele
-          );
-      });
+    return this.showDays().map(ele => {
+      return ele;
+    });
   }
 
   render() {
-    debugger
+    debugger;
     if (!this.props.days) {
       return null;
     }
 
-    debugger
+    debugger;
     return (
       <>
         <div>
+          <Link to="/days/form">This is a link to the create form</Link>
           HERE
           <button onClick={this.handleLogout}></button>
         </div>
-        <ul>
-          {this.renderDays()}
-        </ul>
+        <ul>{this.renderDays()}</ul>
       </>
-    )
+    );
   }
 }
 
 export default DayIndex;
-
-
-

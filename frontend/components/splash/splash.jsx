@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Greeting from "../greeting/greeting";
 import { Redirect } from "react-router-dom";
 class Splash extends React.Component {
