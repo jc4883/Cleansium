@@ -762,8 +762,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       toSplash: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -808,6 +808,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       if (this.state.toSplash) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
           to: "/"
@@ -824,28 +826,21 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "login-form-therapose",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "signup-directions"
-      }, "Type your name & a password to begin"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "new-username",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         autoComplete: "off",
         autoFocus: "autofocus",
-        placeholder: "Your name",
+        placeholder: "e.g. julie24",
+        id: "username-input",
         type: "text",
         value: this.state.username,
-        onChange: this.update("username"),
-        required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        autoComplete: "off",
-        placeholder: "Your password",
-        type: "password",
-        value: this.state.password,
-        onChange: this.update("password"),
-        required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Next")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Already have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        onChange: this.update("username")
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
+        type: "text",
+        id: "password-input"
+      }, _defineProperty(_React$createElement, "type", "password"), _defineProperty(_React$createElement, "value", this.state.password), _defineProperty(_React$createElement, "onChange", this.update("password")), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Next")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Already have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "sign-up-instead",
         to: "/login"
-      }, " Log In")));
+      }, " ", "Log In")));
     }
   }]);
 

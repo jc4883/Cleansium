@@ -17,6 +17,7 @@
 form.login-form-therapose {
   display: flex;
   flex-direction: column;
+  width: 275px;
 }
 
 form.login-form-therapose > * {
