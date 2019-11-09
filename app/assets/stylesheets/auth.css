@@ -1,0 +1,33 @@
+.login-page > section {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  height: 350px;
+  width: 350px;
+}
+
+form.login-form-therapose {
+  display: flex;
+  flex-direction: column;
+}
+
+form.login-form-therapose > * {
+  padding: 5px;
+  margin: 5px;
+}
+
+form.login-form-therapose > input,
+form.login-form-therapose > button {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

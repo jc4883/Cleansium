@@ -191,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _days_days_index_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./days/days_index_container */ "./frontend/components/days/days_index_container.jsx");
+/* harmony import */ var _days_days_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./days/days_index_container */ "./frontend/components/days/days_index_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -220,7 +220,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/days",
-    component: _days_days_index_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _days_days_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   })));
 };
 
@@ -553,8 +553,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LoginForm).call(this, props));
     _this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       phase: "not validated",
       toSplash: false
     };
@@ -615,7 +615,7 @@ function (_React$Component) {
   }, {
     key: "getIncorrectPasswordError",
     value: function getIncorrectPasswordError() {
-      var incorrectPassMsg = "We didn\'t recognize that password.";
+      var incorrectPassMsg = "We didn't recognize that password.";
 
       if (this.props.errors[0] === incorrectPassMsg) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, incorrectPassMsg);
@@ -625,7 +625,7 @@ function (_React$Component) {
     key: "messagesExceptIncorrectPassword",
     value: function messagesExceptIncorrectPassword() {
       return this.props.errors.filter(function (err) {
-        return err !== "We didn\'t recognize that password.";
+        return err !== "We didn't recognize that password.";
       });
     }
   }, {
@@ -663,7 +663,7 @@ function (_React$Component) {
       }, _defineProperty(_React$createElement, "type", "password"), _defineProperty(_React$createElement, "value", this.state.password), _defineProperty(_React$createElement, "onChange", this.update("password")), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Log in")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Don't have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "sign-up-instead",
         to: "/signup"
-      }, " Sign up instead")));
+      }, " ", "Sign up instead")));
     }
   }]);
 
@@ -976,8 +976,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
-
       if (this.state.signup) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
           to: "/signup"
@@ -991,13 +989,7 @@ function (_React$Component) {
           className: "splash-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "logo"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Title")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.bonsai_background
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "root-page-text"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: this.handleSignup
-        }, "Give it a Try")));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Title")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
       }
     }
   }]);
@@ -2598,6 +2590,20 @@ module.exports = invariant;
 
 /***/ }),
 
+/***/ "./node_modules/isarray/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/isarray/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/mini-create-react-context/dist/esm/index.js":
 /*!******************************************************************!*\
   !*** ./node_modules/mini-create-react-context/dist/esm/index.js ***!
@@ -2904,7 +2910,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(/*! isarray */ "./node_modules/path-to-regexp/node_modules/isarray/index.js")
+var isarray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
 
 /**
  * Expose `pathToRegexp`.
@@ -3330,20 +3336,6 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/path-to-regexp/node_modules/isarray/index.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/path-to-regexp/node_modules/isarray/index.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
 
 
 /***/ }),
