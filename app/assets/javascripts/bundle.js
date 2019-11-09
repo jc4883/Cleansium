@@ -273,7 +273,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _days_days_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./days/days_index_container */ "./frontend/components/days/days_index_container.jsx");
+/* harmony import */ var _day_day_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./day/day_index_container */ "./frontend/components/day/day_index_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -302,7 +302,11 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/days",
-    component: _days_days_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _day_day_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    exact: true,
+    path: "/days/:dayId/form",
+    component: DayFormContainer
   })));
 };
 
@@ -310,10 +314,10 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/days/days_index.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/days/days_index.jsx ***!
-  \*************************************************/
+/***/ "./frontend/components/day/day_index.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/day/day_index.jsx ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -343,54 +347,68 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var ThingsIndex =
+var DayIndex =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(ThingsIndex, _React$Component);
+  _inherits(DayIndex, _React$Component);
 
-  function ThingsIndex(props) {
+  function DayIndex(props) {
     var _this;
 
-    _classCallCheck(this, ThingsIndex);
+    _classCallCheck(this, DayIndex);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ThingsIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayIndex).call(this, props));
     _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(ThingsIndex, [{
+  _createClass(DayIndex, [{
     key: "handleLogout",
     value: function handleLogout() {
       this.props.logout();
     }
   }, {
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      this.props.fetchDays();
+    }
   }, {
     key: "handleLogout",
     value: function handleLogout() {
       this.props.logout();
-    }
+    } // dayIncude?(arr) {
+    //   let include = false;
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i].day_index)
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "HERE AT THINGS INDEX"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      if (!this.props.days) {
+        return null;
+      }
+
+      var days = Object.values(this.props.days);
+      debugger;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleLogout
-      }));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
     }
   }]);
 
-  return ThingsIndex;
+  return DayIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ThingsIndex);
+/* harmony default export */ __webpack_exports__["default"] = (DayIndex);
 
 /***/ }),
 
-/***/ "./frontend/components/days/days_index_container.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/days/days_index_container.jsx ***!
-  \***********************************************************/
+/***/ "./frontend/components/day/day_index_container.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/day/day_index_container.jsx ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -398,7 +416,7 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _days_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./days_index */ "./frontend/components/days/days_index.jsx");
+/* harmony import */ var _day_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./day_index */ "./frontend/components/day/day_index.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/day_actions */ "./frontend/actions/day_actions.js");
@@ -410,7 +428,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProp = function mapStateToProp(state, ownProps) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    days: state.entities.days
   };
 };
 
@@ -428,7 +447,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_days_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_day_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -1070,7 +1089,7 @@ function (_React$Component) {
           to: "/login"
         });
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "splash-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "logo"
