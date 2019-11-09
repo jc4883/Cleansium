@@ -6,7 +6,8 @@ import { fetchDays, createDay } from '../../actions/day_actions';
 
 const mapStateToProp = (state, ownProps) => {
   return ({
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    days: state.entities.days,
   })
 }
 
