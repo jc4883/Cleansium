@@ -1,5 +1,5 @@
 import React from 'react';
-import DaysIndex from './days_index';
+import DayIndex from './day_index';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { fetchDays, createDay } from '../../actions/day_actions';
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch) => {
   })
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(DaysIndex)
+export default connect(mapStateToProp, mapDispatchToProps)(DayIndex)
