@@ -86,6 +86,88 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/day_actions.js":
+/*!*****************************************!*\
+  !*** ./frontend/actions/day_actions.js ***!
+  \*****************************************/
+/*! exports provided: RECEIVE_DAY, REMOVE_DAY, RECEIVE_ALL_DAYS, fetchDays, fetchDay, createDay, updateDay, deleteDay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_DAY", function() { return RECEIVE_DAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_DAY", function() { return REMOVE_DAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_DAYS", function() { return RECEIVE_ALL_DAYS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDays", function() { return fetchDays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDay", function() { return fetchDay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDay", function() { return createDay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateDay", function() { return updateDay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteDay", function() { return deleteDay; });
+/* harmony import */ var _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/days_api_util */ "./frontend/util/days_api_util.js");
+
+var RECEIVE_DAY = 'RECEIVE_DAY';
+var REMOVE_DAY = 'REMOVE_DAY';
+var RECEIVE_ALL_DAYS = 'RECEIVE_ALL_DAYS';
+
+var receiveDays = function receiveDays(days) {
+  return {
+    type: RECEIVE_ALL_DAYS,
+    days: days
+  };
+};
+
+var receiveDay = function receiveDay(day) {
+  return {
+    type: RECEIVE_DAY,
+    day: day
+  };
+};
+
+var removeDay = function removeDay(id) {
+  return {
+    type: REMOVE_DAY,
+    dayId: id
+  };
+};
+
+var fetchDays = function fetchDays() {
+  return function (dispatch) {
+    return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchDays"]().then(function (days) {
+      return dispatch(receiveDays(days));
+    });
+  };
+};
+var fetchDay = function fetchDay(id) {
+  return function (dispatch) {
+    return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchDay"](id).then(function (day) {
+      return dispatch(receiveDay(day));
+    });
+  };
+};
+var createDay = function createDay(day) {
+  return function (dispatch) {
+    return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["createDay"](Day).then(function (day) {
+      return dispatch(receiveDay(day));
+    });
+  };
+};
+var updateDay = function updateDay(day) {
+  return function (dispatch) {
+    return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["updateDay"](day).then(function (day) {
+      return dispatch(receiveDay(day));
+    });
+  };
+};
+var deleteDay = function deleteDay(id) {
+  return function (dispatch) {
+    return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteDay"](id).then(function (day) {
+      return dispatch(removeDay(day.id));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -319,6 +401,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _days_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./days_index */ "./frontend/components/days/days_index.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/day_actions */ "./frontend/actions/day_actions.js");
+
 
 
 
@@ -334,6 +418,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
+    },
+    fetchDays: function fetchDays() {
+      return dispatch(Object(_actions_day_actions__WEBPACK_IMPORTED_MODULE_4__["fetchDays"])());
+    },
+    createDay: function createDay(day) {
+      return dispatch(Object(_actions_day_actions__WEBPACK_IMPORTED_MODULE_4__["createDay"])(day));
     }
   };
 };
@@ -1050,6 +1140,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/days_reducer.js":
+/*!*******************************************!*\
+  !*** ./frontend/reducers/days_reducer.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/day_actions */ "./frontend/actions/day_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var daysReducer = function daysReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_DAYS"]:
+      return Object.assign({}, action.days);
+
+    case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DAY"]:
+      return Object.assign({}, state, _defineProperty({}, action.days.id, action.day));
+
+    case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_DAY"]:
+      var newState = Object.assign({}, state);
+      delete newState[action.dayId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (daysReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -1061,10 +1191,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _days_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./days_reducer */ "./frontend/reducers/days_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  days: _days_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1248,6 +1381,60 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/days_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/days_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchDays, createDay, fetchDay, updateDay, deleteDay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDays", function() { return fetchDays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDay", function() { return createDay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDay", function() { return fetchDay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateDay", function() { return updateDay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteDay", function() { return deleteDay; });
+var fetchDays = function fetchDays() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/days'
+  });
+};
+var createDay = function createDay(day) {
+  return $.ajax({
+    method: "POST",
+    url: "api/day",
+    data: {
+      day: day
+    }
+  });
+};
+var fetchDay = function fetchDay(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/days/".concat(id),
+    data: id
+  });
+};
+var updateDay = function updateDay(day) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/days/".concat(day.id),
+    data: {
+      day: day
+    }
+  });
+};
+var deleteDay = function deleteDay(id) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/days/".concat(id)
+  });
+};
 
 /***/ }),
 
