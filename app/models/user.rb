@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :days,
+  foreign_key: :user_id,
+  class_name: :Day
+
   # has_many :projects,
   # foreign_key: :user_id,
   # class_name: :Project

@@ -1,0 +1,1 @@
+json.extract! day, :id, :comment, :user_id, :completed, :day_index
