@@ -1,9 +1,7 @@
-import React from 'react';
-import NavBar from '../nav_bar/nav_bar';
-
+import React from "react";
+import NavBar from "../nav_bar/nav_bar";
 
 class ThingsIndex extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
@@ -13,10 +11,9 @@ class ThingsIndex extends React.Component {
     this.props.logout();
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
-  handleLogout(){
+  handleLogout() {
     this.props.logout();
   }
 
@@ -26,11 +23,8 @@ class ThingsIndex extends React.Component {
         <div>HERE AT THINGS INDEX</div>
         <button onClick={this.handleLogout}></button>
       </>
-    )
+    );
   }
 }
 
 export default ThingsIndex;
-
-
-
