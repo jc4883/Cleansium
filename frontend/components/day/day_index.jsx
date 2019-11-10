@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React from "react";
 import NavBar from "../nav_bar/nav_bar";
 import DayIndexItem from "./day_index_item";
 import { Link } from "react-router-dom";
-=======
-import React from 'react';
-import NavBar from '../nav_bar/nav_bar';
-import DayIndexItem from './day_index_item';
-import { Link } from 'react-router-dom';
->>>>>>> 11fced78bd0e31055ed86f54e39b55e3f2f7ce65
 
 class DayIndex extends React.Component {
   constructor(props) {
@@ -48,7 +41,6 @@ class DayIndex extends React.Component {
           let comment = dayVals[j].comment;
           let rating = dayVals[j].rating;
           let dayIndex = dayVals[j].day_index;
-<<<<<<< HEAD
           dayList.push(
             <DayIndexItem
               comment={comment}
@@ -57,10 +49,6 @@ class DayIndex extends React.Component {
               submitted="true"
             />
           );
-=======
-          let dayId = dayVals[j].id;
-          dayList.push(<DayIndexItem dayId={dayId} comment={comment} rating={rating} dayIndex={dayIndex} submitted="true"/>)
->>>>>>> 11fced78bd0e31055ed86f54e39b55e3f2f7ce65
           found = true;
           break;
         }
