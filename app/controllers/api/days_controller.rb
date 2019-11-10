@@ -5,6 +5,7 @@ class Api::DaysController < ApplicationController
     end
 
     def create
+        debugger
         @day = Day.new(day_params)
         if @day.save
             render "api/days/show"
@@ -37,6 +38,6 @@ class Api::DaysController < ApplicationController
 
     private
     def day_params
-        params.require(:day).permit(:comment, :user_id, :completed, :day_index)
+        params.require(:day).permit(:comment, :user_id, :day_index, :rating)
     end
 end

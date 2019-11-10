@@ -7,7 +7,8 @@ const mapStateToProp = (state, ownProps) => {
   return {
     // currentUser: state.entities.users[state.session.id]
     formType: "create",
-    buttonText: "Create entry"
+    buttonText: "Create entry",
+    dayIndex: ownProps.match.params.day_index
   };
 };
 

@@ -19,11 +19,13 @@ class DayForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const day = Object.assign({}, this.state);
+    const day = Object.assign({}, this.state, { day_index: this.props.dayIndex});
+    debugger
     this.props.processForm(day);
   }
 
   render() {
+    debugger
     return (
       <div>
         <form className="day-show-form" onSubmit={this.handleSubmit}>

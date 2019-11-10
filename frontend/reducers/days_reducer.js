@@ -8,7 +8,6 @@ const daysReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALL_DAYS:
-    debugger
       return Object.assign({}, action.days);
     case RECEIVE_DAY:
       return Object.assign({}, state, { [action.days.id]: action.day });
