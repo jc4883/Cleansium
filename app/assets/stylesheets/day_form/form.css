@@ -8,14 +8,26 @@ form.day-show-form {
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 form.day-show-form > * {
   margin: 10px;
   border: 1px solid #777;
   border-radius: 4px;
+  padding: 6px;
 }
 
 textarea#comment {
   border-radius: 0px;
+}
+
+label.file-upload {
+  border: 0;
+}
+
+input[type="file"] {
+  margin: 7px 0;
 }

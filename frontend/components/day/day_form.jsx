@@ -64,7 +64,11 @@ class DayForm extends React.Component {
             cols="30"
             rows="10"
           ></textarea>
-
+          {/* photo upload doesn't go anywhere yet */}
+          <label className="file-upload">
+            Upload photo:
+            <input type="file" multiple />
+          </label>
           {/* conditional button  */}
           <button type="submit">{this.props.buttonText}</button>
         </form>
