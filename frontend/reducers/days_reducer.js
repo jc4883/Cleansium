@@ -10,7 +10,7 @@ const daysReducer = (state = {}, action) => {
     case RECEIVE_ALL_DAYS:
       return Object.assign({}, action.days);
     case RECEIVE_DAY:
-      return Object.assign({}, state, { [action.days.id]: action.day });
+      return Object.assign({}, state, { [action.day.id]: action.day });
     case REMOVE_DAY:
       let newState = Object.assign({}, state);
       delete newState[action.dayId];

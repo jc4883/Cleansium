@@ -16,6 +16,8 @@ class LoginForm extends React.Component {
     this.handleIcon = this.handleIcon.bind(this);
   }
 
+
+
   handleIcon() {
     this.setState({ toSplash: true });
   }
@@ -68,43 +70,27 @@ class LoginForm extends React.Component {
     }
     return (
       <div className="login-page">
-        <img
-          width="30px"
-          height="30px"
-          src={window.back_icon}
-          onClick={this.handleIcon}
-        />
+        <button onClick={this.handleIcon} id="back-to-splash">
+          Back
+        </button>
 
         <section>
-          <h2>Log in</h2>
+          <h2>Log in to Therapos</h2>
           <form className="login-form-therapose" onSubmit={this.handleSubmit}>
             <div>Username</div>
-            <input
-              autoComplete="off"
-              autoFocus="autofocus"
-              placeholder="e.g. julie24"
-              id="username-input"
-              type="text"
-              value={this.state.username}
-              onChange={this.update("username")}
-            />
+            <input autoComplete="off" autoFocus="autofocus" placeholder="e.g. charles29" 
+                            id="username-input" type="text" value={this.state.username} 
+                                                    onChange={this.update("username")}/>
 
             <div>Password</div>
-            <input
-              type="text"
-              id="password-input"
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-            />
+            <input  type="text"  id="password-input" 
+                              type="password" value={this.state.password} 
+                                        onChange={this.update("password")}/>
 
             <button>Log in</button>
           </form>
-          <h3>Don't have an account?</h3>
-          <Link className="sign-up-instead" to="/signup">
-            {" "}
-            Sign up instead
-          </Link>
+          <h3>Don't have an account?</h3>  
+          <Link className="sign-up-instead" to="/signup"> Sign up instead</Link>
         </section>
       </div>
     );

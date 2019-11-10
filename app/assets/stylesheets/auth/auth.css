@@ -1,34 +1,78 @@
+#back-to-splash {
+  position: absolute;
+  top: 76px;
+  left: 10px;
+  background-color: indianred;
+  height: 40px;
+  width: 100px;
+  color: white;
+  border-radius: 15px;
+}
+
+#back-to-splash:focus {
+  outline: none;
+}
+
+#back-to-splash:hover {
+  background-color: darkslategrey;
+  transition: .4s
+}
+
+.login-page {
+  height: 100vh;
+      display: flex;
+    justify-content: center;
+    background-color: #f6f2ef;
+}
+
 .login-page > section {
+  /*
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
+  box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
   padding: 20px;
   border-radius: 5px;
   height: 350px;
   width: 350px;
+  */
+  background-color: white;
+  margin-top: 17vh;
+
+
+  height: fit-content;
+          color: darkslategray;
+        outline: 2px solid tan;
+        outline-offset: -10px;
+        display: -webkit-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20vh;
+        box-shadow: 0 0 4px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+        padding: 33px;
 }
 
-form.login-form-therapose {
-  display: flex;
-  flex-direction: column;
-  width: 275px;
+.login-form-therapose {
+        display: flex;
+        flex-direction: column;
+        margin: 22px;
+        width: 100%;
 }
-
-form.login-form-therapose > * {
-  padding: 5px;
-  margin: 5px;
+ .login-form-therapose > button {
+            cursor: pointer;
+            background-color: steelblue;
+            border: none;
+            margin-top: 10px;
+            height: 35px;
+            border-radius: 17px;
+            color: white;
+            font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
 }
-
-form.login-form-therapose > input,
-form.login-form-therapose > button {
-  padding: 5px;
-  margin: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+#signup-directions {
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
+    

@@ -1,0 +1,65 @@
+.new-day-photo-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f6f2ef;
+    min-height: 100vh;
+
+}
+
+.new-day-buttons {
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: .3s;
+}
+
+
+.new-day-photo-create h1 {
+  letter-spacing: .4px;
+  padding: 7px 8px;
+  font-size: 36px;
+  color: #283c46;
+  font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+}
+
+.new-day-new-doc {
+    background-color: springgreen;
+    width: 116px;
+    height: 40px;
+    border-radius: 15px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+    transition: .3s;
+}
+
+.new-day-new-doc:focus {
+    outline: none;
+}
+
+.new-day-new-doc:hover {
+    background-color: darkslategray;
+    transition: .3s;
+}
+
+.new-day-return {
+    background-color: indianred;
+    width: 116px;
+    height: 40px;
+    border-radius: 15px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+    transition: .3s;
+}
+
+.new-day-return:focus {
+    outline: none;
+}
+
+.new-day-return:hover {
+    background-color: darkslategray;
+    transition: .3s;
+}

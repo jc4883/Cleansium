@@ -146,7 +146,6 @@ var fetchDay = function fetchDay(id) {
 };
 var createDay = function createDay(day) {
   return function (dispatch) {
-    debugger;
     return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["createDay"](day).then(function (day) {
       return dispatch(receiveDay(day));
     });
@@ -163,6 +162,80 @@ var deleteDay = function deleteDay(id) {
   return function (dispatch) {
     return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteDay"](id).then(function (day) {
       return dispatch(removeDay(day.id));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/photo_upload_actions.js":
+/*!**************************************************!*\
+  !*** ./frontend/actions/photo_upload_actions.js ***!
+  \**************************************************/
+/*! exports provided: RECEIVE_ALL_PHOTO_UPLOADS, RECEIVE_PHOTO_UPLOAD, REMOVE_PHOTO_UPLOAD, fetchPhotoUpload, fetchPhotoUploads, createPhotoUpload, deletePhotoUpload */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_PHOTO_UPLOADS", function() { return RECEIVE_ALL_PHOTO_UPLOADS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTO_UPLOAD", function() { return RECEIVE_PHOTO_UPLOAD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PHOTO_UPLOAD", function() { return REMOVE_PHOTO_UPLOAD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotoUpload", function() { return fetchPhotoUpload; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotoUploads", function() { return fetchPhotoUploads; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhotoUpload", function() { return createPhotoUpload; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhotoUpload", function() { return deletePhotoUpload; });
+/* harmony import */ var _util_photo_upload_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/photo_upload_util */ "./frontend/util/photo_upload_util.js");
+
+var RECEIVE_ALL_PHOTO_UPLOADS = "RECEIVE_ALL_PHOTO_UPLOADS";
+var RECEIVE_PHOTO_UPLOAD = "RECEIVE_PHOTO_UPLOAD";
+var REMOVE_PHOTO_UPLOAD = "REMOVE_PHOTO_UPLOAD";
+
+var receivePhotoUploads = function receivePhotoUploads(photoUploads) {
+  return {
+    type: RECEIVE_ALL_PHOTO_UPLOADS,
+    photoUploads: photoUploads
+  };
+};
+
+var receivePhotoUpload = function receivePhotoUpload(photoUpload) {
+  return {
+    type: RECEIVE_PHOTO_UPLOAD,
+    photoUpload: photoUpload
+  };
+};
+
+var removePhotoUpload = function removePhotoUpload(id) {
+  return {
+    type: REMOVE_PHOTO_UPLOAD,
+    photoUploadId: id
+  };
+};
+
+var fetchPhotoUpload = function fetchPhotoUpload(id) {
+  return function (dispatch) {
+    return _util_photo_upload_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhotoUpload"](id).then(function (photoUpload) {
+      return dispatch(receivePhotoUpload(photoUpload));
+    });
+  };
+};
+var fetchPhotoUploads = function fetchPhotoUploads(dayId) {
+  return function (dispatch) {
+    return _util_photo_upload_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhotoUploads"](dayId).then(function (photoUploads) {
+      return dispatch(receivePhotoUploads(photoUploads));
+    });
+  };
+};
+var createPhotoUpload = function createPhotoUpload(dayId, formData) {
+  return function (dispatch) {
+    return _util_photo_upload_util__WEBPACK_IMPORTED_MODULE_0__["createPhotoUpload"](dayId, formData).then(function (photoUpload) {
+      return dispatch(receivePhotoUpload(photoUpload));
+    });
+  };
+};
+var deletePhotoUpload = function deletePhotoUpload(id) {
+  return function (dispatch) {
+    return _util_photo_upload_util__WEBPACK_IMPORTED_MODULE_0__["deletePhotoUpload"](id).then(function (photoUpload) {
+      return dispatch(removePhotoUpload(id));
     });
   };
 };
@@ -275,11 +348,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
 /* harmony import */ var _day_day_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./day/day_index_container */ "./frontend/components/day/day_index_container.jsx");
-/* harmony import */ var _day_create_day_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./day/create_day_container */ "./frontend/components/day/create_day_container.js");
-/* harmony import */ var _day_update_day_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./day/update_day_container */ "./frontend/components/day/update_day_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _create_day_create_day_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create_day/create_day_container */ "./frontend/components/create_day/create_day_container.jsx");
+/* harmony import */ var _update_day_update_day_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./update_day/update_day_container */ "./frontend/components/update_day/update_day_container.js");
+/* harmony import */ var _create_day_new_day_photo_create_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./create_day/new_day_photo_create_container */ "./frontend/components/create_day/new_day_photo_create_container.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -292,30 +367,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
     path: "/",
-    component: _splash_splash__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
+    component: _splash_splash__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
     exact: true,
     path: "/days",
     component: _day_day_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
     exact: true,
-    path: "/days/:day_index/form",
-    component: _day_create_day_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
+    path: "/days/:day_index/createForm",
+    component: _create_day_create_day_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
     exact: true,
-    path: "/days/:dayId/form",
-    component: _day_update_day_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+    path: "/days/:dayId/updateForm",
+    component: _update_day_update_day_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
+    exact: true,
+    path: "/new_day_photo/:day_index",
+    component: _create_day_new_day_photo_create_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   })));
 };
 
@@ -323,10 +402,10 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/day/create_day_container.js":
-/*!*********************************************************!*\
-  !*** ./frontend/components/day/create_day_container.js ***!
-  \*********************************************************/
+/***/ "./frontend/components/create_day/create_day_container.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/create_day/create_day_container.jsx ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -334,9 +413,11 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _day_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./day_form */ "./frontend/components/day/day_form.jsx");
+/* harmony import */ var _create_day_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create_day_form */ "./frontend/components/create_day/create_day_form.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/day_actions */ "./frontend/actions/day_actions.js");
+/* harmony import */ var _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/photo_upload_actions */ "./frontend/actions/photo_upload_actions.js");
+
 
 
 
@@ -354,24 +435,23 @@ var mapStateToProp = function mapStateToProp(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    // logout: () => dispatch(logout())
-    // fetchDays: () => dispatch(fetchDays()),
-    // createDay: day => dispatch(createDay(day)),
-    // updateDay: day => dispatch(receiveDay(day)),
     processForm: function processForm(day) {
       return dispatch(Object(_actions_day_actions__WEBPACK_IMPORTED_MODULE_3__["createDay"])(day));
+    },
+    createPhotoUpload: function createPhotoUpload(dayId, formData) {
+      return dispatch(Object(_actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__["createPhotoUpload"])(dayId, formData));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_day_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_create_day_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
-/***/ "./frontend/components/day/day_form.jsx":
-/*!**********************************************!*\
-  !*** ./frontend/components/day/day_form.jsx ***!
-  \**********************************************/
+/***/ "./frontend/components/create_day/create_day_form.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/create_day/create_day_form.jsx ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -379,6 +459,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _new_photo_form_new_photo_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../new_photo_form/new_photo_form */ "./frontend/components/new_photo_form/new_photo_form.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -401,26 +482,33 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var DayForm =
+
+var CreateDayForm =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(DayForm, _React$Component);
+  _inherits(CreateDayForm, _React$Component);
 
-  function DayForm(props) {
+  function CreateDayForm(props) {
     var _this;
 
-    _classCallCheck(this, DayForm);
+    _classCallCheck(this, CreateDayForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayForm).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateDayForm).call(this, props));
     _this.state = {
-      rating: _this.props.day === undefined ? null : _this.props.day.rating,
-      comment: _this.props.day === undefined ? "" : _this.props.day.comment
+      rating: "",
+      comment: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.forceParentRender = _this.forceParentRender.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(DayForm, [{
+  _createClass(CreateDayForm, [{
+    key: "forceParentRender",
+    value: function forceParentRender() {
+      this.forceUpdate();
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -439,49 +527,258 @@ function (_React$Component) {
       var dayWithUserId = Object.assign({}, day, {
         user_id: this.props.currentUser.id
       });
-      this.props.processForm(dayWithUserId).then(this.props.history.push("/days"));
+      this.props.processForm(dayWithUserId).then(this.props.history.push("/new_day_photo/".concat(this.props.dayIndex)));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.formType === "update") {
+        this.setState({
+          rating: this.props.day.rating,
+          comment: this.props.day.comment
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement;
+      var option1Value = "";
+      var option2Value = "";
+      var option3Value = "";
+      var option4Value = "";
+      var option5Value = "";
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "day-show-form",
+      if (this.props.day === undefined) {} else {
+        switch (this.props.day.rating) {
+          case "":
+            break;
+
+          case 1:
+            option1Value = "selected";
+            break;
+
+          case 2:
+            option2Value = "selected";
+            break;
+
+          case 3:
+            option3Value = "selected";
+            break;
+
+          case 4:
+            option4Value = "selected";
+            break;
+
+          case 5:
+            option5Value = "selected";
+            break;
+
+          default:
+            break;
+        }
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "day-show-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "create-day-form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "rating-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "How much you craved junk food:\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "rating",
         onChange: this.update("rating"),
         value: this.props.rating
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "",
-        disabled: true,
+        disable: true,
         selected: true
-      }, "--How bad was your craving today--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
+      }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: "".concat(option1Value)
       }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
+        selected: "".concat(option2Value)
       }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3"
+        selected: "".concat(option3Value)
       }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "4"
+        selected: "".concat(option4Value)
       }, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "5"
-      }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", (_React$createElement = {
+        selected: "".concat(option5Value)
+      }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\xA0/ 5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         id: "comment",
-        placeholder: "Enter text here",
-        value: this.props.comment,
-        onChange: this.update("comment")
-      }, _defineProperty(_React$createElement, "placeholder", "How were your cravings"), _defineProperty(_React$createElement, "cols", "30"), _defineProperty(_React$createElement, "rows", "10"), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        value: this.state.comment,
+        onChange: this.update("comment"),
+        placeholder: "How did you ate health consciously today?",
+        cols: "30",
+        rows: "10"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "submit-button",
         type: "submit"
       }, this.props.buttonText)));
     }
   }]);
 
-  return DayForm;
+  return CreateDayForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (DayForm);
+/* harmony default export */ __webpack_exports__["default"] = (CreateDayForm);
+
+/***/ }),
+
+/***/ "./frontend/components/create_day/new_day_photo_create.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/create_day/new_day_photo_create.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _new_photo_form_new_photo_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../new_photo_form/new_photo_form */ "./frontend/components/new_photo_form/new_photo_form.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var NewDayPhotoCreate =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(NewDayPhotoCreate, _React$Component);
+
+  function NewDayPhotoCreate(props) {
+    var _this;
+
+    _classCallCheck(this, NewDayPhotoCreate);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewDayPhotoCreate).call(this, props));
+    _this.findDayId = _this.findDayId.bind(_assertThisInitialized(_this));
+    _this.handleNewDocButton = _this.handleNewDocButton.bind(_assertThisInitialized(_this));
+    _this.forceParentRender = _this.forceParentRender.bind(_assertThisInitialized(_this));
+    _this.returnToIndex = _this.returnToIndex.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(NewDayPhotoCreate, [{
+    key: "returnToIndex",
+    value: function returnToIndex() {
+      this.props.history.push("/");
+    }
+  }, {
+    key: "forceParentRender",
+    value: function forceParentRender() {}
+  }, {
+    key: "handleNewDocButton",
+    value: function handleNewDocButton() {
+      document.getElementById("docs-index-form").classList.remove("hide-boi");
+    }
+  }, {
+    key: "findDayId",
+    value: function findDayId() {
+      var dayIndex = this.props.match.params.day_index;
+      var days = Object.values(this.props.days);
+
+      for (var i = 0; i < days.length; i++) {
+        if (dayIndex == days[i].day_index) {
+          return days[i].id;
+        }
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchDays();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (!this.props.days) {
+        return null;
+      }
+
+      var dayId = this.findDayId();
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-day-photo-create"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-day-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "new-day-return",
+        onClick: this.returnToIndex
+      }, "Save & return"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "new-day-new-doc",
+        onClick: this.handleNewDocButton
+      }, "Add photos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "docs-index-form",
+        className: "hide-boi"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_new_photo_form_new_photo_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        createPhotoUpload: this.props.createPhotoUpload,
+        dayId: dayId,
+        parentRender: this.forceParentRender
+      }))));
+    }
+  }]);
+
+  return NewDayPhotoCreate;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (NewDayPhotoCreate);
+
+/***/ }),
+
+/***/ "./frontend/components/create_day/new_day_photo_create_container.jsx":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/create_day/new_day_photo_create_container.jsx ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _new_day_photo_create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./new_day_photo_create */ "./frontend/components/create_day/new_day_photo_create.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/day_actions */ "./frontend/actions/day_actions.js");
+/* harmony import */ var _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/photo_upload_actions */ "./frontend/actions/photo_upload_actions.js");
+
+
+
+
+
+
+var mapStateToProp = function mapStateToProp(state, ownProps) {
+  return {
+    days: state.entities.days
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchDays: function fetchDays() {
+      return dispatch(Object(_actions_day_actions__WEBPACK_IMPORTED_MODULE_3__["fetchDays"])());
+    },
+    createPhotoUpload: function createPhotoUpload(dayId, formData) {
+      return dispatch(Object(_actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__["createPhotoUpload"])(dayId, formData));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_new_day_photo_create__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -537,6 +834,7 @@ function (_React$Component) {
     _this.showDays = _this.showDays.bind(_assertThisInitialized(_this));
     _this.renderDays = _this.renderDays.bind(_assertThisInitialized(_this));
     _this.initialRendered = false;
+    _this.componentDidUpdateCount = 0;
     return _this;
   }
 
@@ -551,9 +849,12 @@ function (_React$Component) {
       this.props.fetchDays();
     }
   }, {
-    key: "handleLogout",
-    value: function handleLogout() {
-      this.props.logout();
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.componentDidUpdateCount !== 5) {
+        this.props.fetchDays();
+        this.componentDidUpdateCount++;
+      }
     } // dayIncude?(arr) {
     //   let include = false;
     //   for (let i = 0; i < arr.length; i++) {
@@ -575,11 +876,13 @@ function (_React$Component) {
             var comment = dayVals[j].comment;
             var rating = dayVals[j].rating;
             var dayIndex = dayVals[j].day_index;
+            var dayId = dayVals[j].id;
             dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
               comment: comment,
               rating: rating,
               dayIndex: dayIndex,
-              submitted: "true"
+              submitted: "true",
+              dayId: dayId
             }));
             found = true;
             break;
@@ -611,11 +914,11 @@ function (_React$Component) {
         return null;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        logout: this.props.logout
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "day-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleLogout
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays())));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome ", this.props.currentUser.username, ", Log your health progress!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays())));
     }
   }]);
 
@@ -741,14 +1044,12 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (this.state.toShow) {
-        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-          to: "/days/".concat(this.props.dayId, "/form")
+          to: "/days/".concat(this.props.dayId, "/updateForm")
         });
       } else if (this.state.toCreate) {
-        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-          to: "/days/".concat(this.props.dayIndex, "/form")
+          to: "/days/".concat(this.props.dayIndex, "/createForm")
         });
       }
 
@@ -759,15 +1060,48 @@ function (_React$Component) {
       if (this.props.submitted === "true") {
         buttonHTML = "Edit";
         comment = this.props.comment;
-        rating = this.props.rating;
+        rating = "Rating: ".concat(this.props.rating);
+
+        if (this.props.rating == null) {
+          rating = 'Rating: none';
+        }
       } else {
         buttonHTML = "Submit";
       }
 
+      var ratingColor = "";
+
+      switch (this.props.rating) {
+        case 1:
+          ratingColor = "green";
+          break;
+
+        case 2:
+          ratingColor = "yellow";
+          break;
+
+        case 3:
+          ratingColor = "orange";
+          break;
+
+        case 4:
+          ratingColor = "indianred";
+          break;
+
+        case 5:
+          ratingColor = "maroon";
+          break;
+
+        default:
+          break;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-item",
+        className: "index-item ".concat(ratingColor),
         onClick: this.handleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, comment), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "rating-dynamic"
+      }, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML));
     }
   }]);
 
@@ -775,50 +1109,6 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (DayIndexItem);
-
-/***/ }),
-
-/***/ "./frontend/components/day/update_day_container.js":
-/*!*********************************************************!*\
-  !*** ./frontend/components/day/update_day_container.js ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _day_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./day_form */ "./frontend/components/day/day_form.jsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/day_actions */ "./frontend/actions/day_actions.js");
-
-
-
-
-
-var mapStateToProp = function mapStateToProp(state, ownProps) {
-  debugger;
-  return {
-    // currentUser: state.entities.users[state.session.id]
-    formType: "update",
-    buttonText: "Update entry"
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    // logout: () => dispatch(logout())
-    // fetchDays: () => dispatch(fetchDays()),
-    // createDay: day => dispatch(createDay(day)),
-    // updateDay: day => dispatch(receiveDay(day)),
-    processForm: function processForm(day) {
-      return dispatch(Object(_actions_day_actions__WEBPACK_IMPORTED_MODULE_3__["updateDay"])(day));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_day_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -905,10 +1195,16 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
     _this.handleDropDown = _this.handleDropDown.bind(_assertThisInitialized(_this));
+    _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(NavBar, [{
+    key: "handleLogout",
+    value: function handleLogout() {
+      this.props.logout();
+    }
+  }, {
     key: "handleDropDown",
     value: function handleDropDown() {
       document.getElementById("avatar-dropdown").classList.toggle("show"); //document.getElementById("triangle-boy").classList.toggle("show-triangle-boy")
@@ -917,33 +1213,13 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-dark bg-dark d-flex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "navbar-brand"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "d-inline-block align-top",
-        width: "30px",
-        height: "30px",
-        src: "https://github.com/jc4883/AnimationDemo/blob/master/src/assets/wall.png?raw=true"
-      }), "Therapose"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "navbar-toggler",
-        type: "button",
-        "data-toggle": "collapse",
-        "data-target": "#navbarSupportedContent"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "collapse navbar-collapse",
-        id: "navbarSupportedContent"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "nav-link",
-        onClick: this.props.logout
-      }, "logout")))));
+        className: "navbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.broom,
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Cleansium")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleLogout
+      }, "Logout"));
     }
   }]);
 
@@ -951,6 +1227,260 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBar);
+
+/***/ }),
+
+/***/ "./frontend/components/new_photo_form/new_photo_form.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/new_photo_form/new_photo_form.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var NewPhotoForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(NewPhotoForm, _React$Component);
+
+  function NewPhotoForm(props) {
+    var _this;
+
+    _classCallCheck(this, NewPhotoForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewPhotoForm).call(this, props));
+    _this.state = {
+      title: "",
+      description: "",
+      photoFile: null,
+      photoUrl: null
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleTitle = _this.handleTitle.bind(_assertThisInitialized(_this));
+    _this.handleDescription = _this.handleDescription.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
+    _this.handleCancel = _this.handleCancel.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(NewPhotoForm, [{
+    key: "handleTitle",
+    value: function handleTitle(e) {
+      this.setState({
+        title: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleDescription",
+    value: function handleDescription(e) {
+      this.setState({
+        description: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this2 = this;
+
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+      var cutPng = file.name.slice(0, -4); //get photo url even before photo is uploaded
+
+      fileReader.onloadend = function () {
+        _this2.setState({
+          photoFile: file,
+          photoUrl: fileReader.result,
+          title: cutPng
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    }
+  }, {
+    key: "handleCancel",
+    value: function handleCancel() {
+      document.getElementById("docs-index-form").classList.add("hide-boi");
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.handleCancel();
+      var formData = new FormData();
+      formData.append('photo_upload[title]', this.state.title);
+      formData.append('photo_upload[description]', this.state.description);
+      formData.append('photo_upload[day_id]', this.props.dayId);
+
+      if (this.state.photoFile) {
+        formData.append('photo_upload[photo]', this.state.photoFile);
+      }
+
+      this.props.createPhotoUpload(this.props.projectId, formData).then(this.props.parentRender);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var preview = this.state.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "constraint-attached",
+        src: this.state.photoUrl
+      }) : null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "docs-index-form-html",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "form-excluding-submit-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "form-excluding-submit-button-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "file-input-docs",
+        onChange: this.handleFile,
+        type: "file"
+      }), preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "docs-index-form-inputs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "docs-index-form-title-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "docs-index-form-title",
+        type: "text",
+        onChange: this.handleTitle,
+        value: this.state.title
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, ".png")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "doc-notes-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Add any notes here...",
+        id: "docs-index-form-description",
+        type: "text",
+        onChange: this.handleDescription,
+        value: this.state.description
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "docs-index-form-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "docs-index-form-post-button",
+        type: "image",
+        src: window.post_to_the_project
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.handleCancel
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.discard_changes
+      })))));
+    }
+  }]);
+
+  return NewPhotoForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (NewPhotoForm);
+
+/***/ }),
+
+/***/ "./frontend/components/photo_upload_index_item/photo_upload_index_item.jsx":
+/*!*********************************************************************************!*\
+  !*** ./frontend/components/photo_upload_index_item/photo_upload_index_item.jsx ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var PhotoUploadIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PhotoUploadIndexItem, _React$Component);
+
+  function PhotoUploadIndexItem(props) {
+    var _this;
+
+    _classCallCheck(this, PhotoUploadIndexItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoUploadIndexItem).call(this, props));
+    _this.photoUpload = _this.props.photoUpload;
+    _this.handleShow = _this.handleShow.bind(_assertThisInitialized(_this));
+    _this.state = {
+      redirect: false
+    }; //we get this.props.photoUpload from DocsIndex
+
+    return _this;
+  }
+
+  _createClass(PhotoUploadIndexItem, [{
+    key: "handleShow",
+    value: function handleShow() {
+      this.setState({
+        redirect: true
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "doc-item",
+        onClick: this.handleShow
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "doc-item-image",
+        src: this.photoUpload.photoUrl
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "doc-item-title"
+      }, this.photoUpload.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "border-boi"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        id: "doc-item-description"
+      }, this.photoUpload.description));
+    }
+  }]);
+
+  return PhotoUploadIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PhotoUploadIndexItem);
 
 /***/ }),
 
@@ -1121,18 +1651,16 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: "30px",
-        height: "30px",
-        src: window.back_icon,
-        onClick: this.handleIcon
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleIcon,
+        id: "back-to-splash"
+      }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Log in to Therapos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "login-form-therapose",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         autoComplete: "off",
         autoFocus: "autofocus",
-        placeholder: "e.g. julie24",
+        placeholder: "e.g. charles29",
         id: "username-input",
         type: "text",
         value: this.state.username,
@@ -1143,7 +1671,7 @@ function (_React$Component) {
       }, _defineProperty(_React$createElement, "type", "password"), _defineProperty(_React$createElement, "value", this.state.password), _defineProperty(_React$createElement, "onChange", this.update("password")), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Log in")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Don't have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "sign-up-instead",
         to: "/signup"
-      }, " ", "Sign up instead")));
+      }, " Sign up instead")));
     }
   }]);
 
@@ -1298,18 +1826,16 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        width: "30px",
-        height: "30px",
-        src: window.back_icon,
-        onClick: this.handleIcon
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleIcon,
+        id: "back-to-splash"
+      }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "login-form-therapose",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         autoComplete: "off",
         autoFocus: "autofocus",
-        placeholder: "e.g. julie24",
+        placeholder: "e.g. charles29",
         id: "username-input",
         type: "text",
         value: this.state.username,
@@ -1463,7 +1989,14 @@ function (_React$Component) {
           className: "splash-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "logo"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Title")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Cleansium")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          "class": "vege-background",
+          src: window.background
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "root-page-text"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "We're glad you could make it.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Stay as long as you need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Trying to be healthier?"), "\xA0 40% of American adults are obese, and we think ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "fast foods aren't helping. \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Try Cleansium:"), " Feel livelier, stronger, better.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Try our 4 week challenge."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.handleSignup
+        }, "Give Cleansium a Try")));
       }
     }
   }]);
@@ -1472,6 +2005,301 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
+
+/***/ }),
+
+/***/ "./frontend/components/update_day/update_day_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/update_day/update_day_container.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _update_day_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./update_day_form */ "./frontend/components/update_day/update_day_form.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_day_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/day_actions */ "./frontend/actions/day_actions.js");
+/* harmony import */ var _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/photo_upload_actions */ "./frontend/actions/photo_upload_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+
+
+
+
+
+var mapStateToProp = function mapStateToProp(state, ownProps) {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    day: state.entities.days[ownProps.match.params.dayId],
+    formType: "update",
+    buttonText: "Update entry",
+    photoUploads: state.entities.photoUploads.uploads
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_5__["logout"])());
+    },
+    processForm: function processForm(day) {
+      return dispatch(Object(_actions_day_actions__WEBPACK_IMPORTED_MODULE_3__["updateDay"])(day));
+    },
+    createPhotoUpload: function createPhotoUpload(dayId, formData) {
+      return dispatch(Object(_actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__["createPhotoUpload"])(dayId, formData));
+    },
+    fetchPhotoUploads: function fetchPhotoUploads(dayId) {
+      return dispatch(Object(_actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_4__["fetchPhotoUploads"])(dayId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_update_day_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/update_day/update_day_form.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/update_day/update_day_form.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _new_photo_form_new_photo_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../new_photo_form/new_photo_form */ "./frontend/components/new_photo_form/new_photo_form.jsx");
+/* harmony import */ var _photo_upload_index_item_photo_upload_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../photo_upload_index_item/photo_upload_index_item */ "./frontend/components/photo_upload_index_item/photo_upload_index_item.jsx");
+/* harmony import */ var _nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../nav_bar/nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var UpdateDayForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(UpdateDayForm, _React$Component);
+
+  function UpdateDayForm(props) {
+    var _this;
+
+    _classCallCheck(this, UpdateDayForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UpdateDayForm).call(this, props));
+    _this.state = {
+      rating: "",
+      comment: "",
+      toIndex: false
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.forceParentRender = _this.forceParentRender.bind(_assertThisInitialized(_this));
+    _this.handleNewDocButton = _this.handleNewDocButton.bind(_assertThisInitialized(_this));
+    _this.firstRendered = false;
+    _this.handleIcon = _this.handleIcon.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(UpdateDayForm, [{
+    key: "handleIcon",
+    value: function handleIcon() {
+      this.setState({
+        toIndex: true
+      });
+    }
+  }, {
+    key: "handleNewDocButton",
+    value: function handleNewDocButton() {
+      document.getElementById("docs-index-form").classList.remove("hide-boi");
+    }
+  }, {
+    key: "forceParentRender",
+    value: function forceParentRender() {
+      this.forceUpdate();
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var day = Object.assign({}, this.state, {
+        day_index: this.props.dayIndex
+      });
+      var dayWithUserId = Object.assign({}, day, {
+        user_id: this.props.currentUser.id
+      });
+      var dayWithId = Object.assign({}, dayWithUserId, {
+        id: this.props.day.id
+      });
+      var a = this.props.processForm(dayWithId);
+      a.then(this.props.history.push("/days"));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.formType === "update") {
+        this.setState({
+          rating: this.props.day.rating,
+          comment: this.props.day.comment
+        });
+      }
+
+      this.props.fetchPhotoUploads(this.props.day.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.toIndex) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Redirect"], {
+          to: "/days"
+        });
+      }
+
+      if (!this.firstRendered) {
+        this.firstRendered = true;
+        return null;
+      }
+
+      var option1Value = "";
+      var option2Value = "";
+      var option3Value = "";
+      var option4Value = "";
+      var option5Value = "";
+
+      if (this.props.day === undefined) {} else {
+        switch (this.props.day.rating) {
+          case "":
+            break;
+
+          case 1:
+            option1Value = "selected";
+            break;
+
+          case 2:
+            option2Value = "selected";
+            break;
+
+          case 3:
+            option3Value = "selected";
+            break;
+
+          case 4:
+            option4Value = "selected";
+            break;
+
+          case 5:
+            option5Value = "selected";
+            break;
+
+          default:
+            break;
+        }
+      }
+
+      if (!!this.props.photoUploads) {
+        var photoUploads = Object.values(this.props.photoUploads);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.handleIcon,
+          id: "back-to-splash"
+        }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          logout: this.props.logout
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "day-show-form-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          className: "day-show-form",
+          onSubmit: this.handleSubmit
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "rating-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "How much you craved junk food:\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+          id: "rating",
+          onChange: this.update("rating"),
+          value: this.props.rating
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          disable: true,
+          selected: true
+        }, "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          selected: "".concat(option1Value)
+        }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          selected: "".concat(option2Value)
+        }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          selected: "".concat(option3Value)
+        }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          selected: "".concat(option4Value)
+        }, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          selected: "".concat(option5Value)
+        }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\xA0/ 5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          id: "comment",
+          value: this.state.comment,
+          onChange: this.update("comment"),
+          placeholder: "How did you ate health consciously today?",
+          cols: "30",
+          rows: "10"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "submit-button",
+          type: "submit"
+        }, this.props.buttonText)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "photos-button",
+          onClick: this.handleNewDocButton
+        }, "Add More Photos!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "docs-index-form",
+          className: "hide-boi"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_new_photo_form_new_photo_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          createPhotoUpload: this.props.createPhotoUpload,
+          dayId: this.props.day.id,
+          parentRender: this.forceParentRender
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          id: "documents-ul"
+        }, photoUploads.map(function (photoUpload) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_photo_upload_index_item_photo_upload_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            key: photoUpload.id,
+            photoUpload: photoUpload
+          });
+        }))));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Working");
+      }
+    }
+  }]);
+
+  return UpdateDayForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (UpdateDayForm);
 
 /***/ }),
 
@@ -1553,7 +2381,7 @@ var daysReducer = function daysReducer() {
       return Object.assign({}, action.days);
 
     case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DAY"]:
-      return Object.assign({}, state, _defineProperty({}, action.days.id, action.day));
+      return Object.assign({}, state, _defineProperty({}, action.day.id, action.day));
 
     case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_DAY"]:
       var newState = Object.assign({}, state);
@@ -1581,12 +2409,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _days_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./days_reducer */ "./frontend/reducers/days_reducer.js");
+/* harmony import */ var _photo_uploads_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photo_uploads_reducer */ "./frontend/reducers/photo_uploads_reducer.js");
+
 
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  days: _days_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  days: _days_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  photoUploads: _photo_uploads_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1609,6 +2440,73 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/photo_uploads_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/photo_uploads_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/photo_upload_actions */ "./frontend/actions/photo_upload_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var photoUploadsReducer = function photoUploadsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO_UPLOAD"]:
+      var newState = Object.assign({}, state);
+      delete newState.uploads[action.photoUploadId];
+      return newState;
+
+    case _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PHOTO_UPLOADS"]:
+      if (Object.values(action.photoUploads).length === 0) {
+        return {
+          uploads: {}
+        };
+      } else {
+        return Object.assign(action.photoUploads);
+      }
+
+    // return Object.assign(action.photoUploads, state )
+
+    case _actions_photo_upload_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO_UPLOAD"]:
+      var key = Object.keys(action.photoUpload.uploads)[0];
+
+      if (Object.values(state).length === 0) {
+        return Object.assign({
+          key: key
+        }, {
+          uploads: Object.assign({}, _defineProperty({}, action.photoUpload.uploads[key].id, action.photoUpload.uploads[key]))
+        });
+      } else {
+        return Object.assign({
+          key: key
+        }, {
+          uploads: Object.assign(state.uploads, _defineProperty({}, action.photoUpload.uploads[key].id, action.photoUpload.uploads[key]))
+        });
+      } // let uploads = Object.assign(state.photoUpload.uploads, action.photoUpload.uploads)
+      //return Object.assign({project_title : action.photoUpload.project_title}, {uploads : Object.assign(state.uploads, {[action.photoUpload.uploads[key].id] : action.photoUpload.uploads[key]})} )
+
+
+      return state;
+    // return Object.assign({project_title : action.photoUpload.project_title}, {created_at : action.photoUpload.uploads[key].created_at}, {uploads : Object.assign(state.uploads, {[action.photoUpload.uploads[key].id] : action.photoUpload.uploads[key]})} )
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (photoUploadsReducer);
 
 /***/ }),
 
@@ -1822,6 +2720,49 @@ var deleteDay = function deleteDay(id) {
   return $.ajax({
     method: "DELETE",
     url: "api/days/".concat(id)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/photo_upload_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/photo_upload_util.js ***!
+  \********************************************/
+/*! exports provided: fetchPhotoUploads, createPhotoUpload, deletePhotoUpload, fetchPhotoUpload */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotoUploads", function() { return fetchPhotoUploads; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhotoUpload", function() { return createPhotoUpload; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhotoUpload", function() { return deletePhotoUpload; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotoUpload", function() { return fetchPhotoUpload; });
+var fetchPhotoUploads = function fetchPhotoUploads(dayId) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/days/".concat(dayId, "/photo_uploads")
+  });
+};
+var createPhotoUpload = function createPhotoUpload(dayId, formData) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/days/".concat(dayId, "/photo_uploads"),
+    data: formData,
+    contentType: false,
+    processData: false
+  });
+};
+var deletePhotoUpload = function deletePhotoUpload(id) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/photo_uploads/".concat(id)
+  });
+};
+var fetchPhotoUpload = function fetchPhotoUpload(id) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/photo_uploads/".concat(id)
   });
 };
 
@@ -3161,20 +4102,6 @@ module.exports = invariant;
 
 /***/ }),
 
-/***/ "./node_modules/isarray/index.js":
-/*!***************************************!*\
-  !*** ./node_modules/isarray/index.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/mini-create-react-context/dist/esm/index.js":
 /*!******************************************************************!*\
   !*** ./node_modules/mini-create-react-context/dist/esm/index.js ***!
@@ -3481,7 +4408,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
+var isarray = __webpack_require__(/*! isarray */ "./node_modules/path-to-regexp/node_modules/isarray/index.js")
 
 /**
  * Expose `pathToRegexp`.
@@ -3907,6 +4834,20 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/path-to-regexp/node_modules/isarray/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/path-to-regexp/node_modules/isarray/index.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),

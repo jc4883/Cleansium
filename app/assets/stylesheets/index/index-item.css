@@ -1,4 +1,33 @@
+.green {
+    background-color: greenyellow !important;
+}
+
+.yellow {
+    background-color: yellow !important;
+}
+
+.orange {
+    background-color: #ffc863 !important;
+}
+
+.indianred {
+    background-color: indianred !important;
+}
+
+.maroon {
+    background-color: maroon !important;
+}
+
+
+.index-item:hover {
+    transform: scale(1.05);
+    transition: .4s;
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px darkslategrey;
+}
+
+
 .index-item {
+    transition: .3s;
     display: flex;
     width: 12%;
     height: 22vh;
@@ -16,7 +45,7 @@
 
 .index-item h4 {
     margin: 0;
-    font-weight: 300;
+    font-weight: 500;
     color: #d2b48c;
 }
 

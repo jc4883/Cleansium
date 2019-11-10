@@ -29,16 +29,27 @@ class Splash extends React.Component {
     } else {
       return (
         <div className="splash-page">
+
           <header>
             <div className="logo">
-              <h1>Title</h1>
+              <h1>Cleansium</h1>
             </div>
             <Greeting />
           </header>
-          {/* <img src={window.bonsai_background} /> */}
-          {/* <div className="root-page-text">
-            <button onClick={this.handleSignup}>Give it a Try</button>
-          </div> */}
+          <img class="vege-background" src={window.background}/>
+          <div className="root-page-text" >
+            <h1>
+              We're glad you could make it.
+                    <br />
+              Stay as long as you need
+            </h1>
+
+            <p>
+                <strong>Trying to be healthier?</strong>&nbsp; 40% of American adults are obese, and we think <br />fast foods aren't helping. &nbsp;<strong>Try Cleansium:</strong> Feel livelier,
+              stronger, better.<br />Try our 4 week challenge.
+            </p>
+            <button onClick={this.handleSignup}>Give Cleansium a Try</button>
+          </div>
         </div>
       );
     }

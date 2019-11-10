@@ -42,13 +42,17 @@ class SessionForm extends React.Component {
       return <Redirect to="/" />;
     }
     return (
+
       <div className="login-page">
-        <img
+        <button onClick={this.handleIcon} id="back-to-splash">
+          Back
+        </button>
+        {/*<img
           width="30px"
           height="30px"
           src={window.back_icon}
           onClick={this.handleIcon}
-        />
+        /> */}
         <section>
           <h2>Sign up</h2>
           <form className="login-form-therapose" onSubmit={this.handleSubmit}>
@@ -59,7 +63,7 @@ class SessionForm extends React.Component {
             <input
               autoComplete="off"
               autoFocus="autofocus"
-              placeholder="e.g. julie24"
+              placeholder="e.g. charles29"
               id="username-input"
               type="text"
               value={this.state.username}

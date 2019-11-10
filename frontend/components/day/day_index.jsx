@@ -10,7 +10,10 @@ class DayIndex extends React.Component {
     this.showDays = this.showDays.bind(this);
     this.renderDays = this.renderDays.bind(this);
     this.initialRendered = false;
+    this.componentDidUpdateCount = 0;
   }
+
+
 
   handleLogout() {
     this.props.logout();
@@ -20,7 +23,13 @@ class DayIndex extends React.Component {
     this.props.fetchDays();
   }
 
-  
+  componentDidUpdate() {
+    if (this.componentDidUpdateCount !== 5) {
+      this.props.fetchDays();
+      this.componentDidUpdateCount++;
+    }
+
+  }
 
   // dayIncude?(arr) {
   //   let include = false;
@@ -76,6 +85,9 @@ class DayIndex extends React.Component {
       <>
         <NavBar logout={this.props.logout} />
         <div className="day-index">
+          <div>
+  <h1>Welcome {this.props.currentUser.username}, Log your health progress!</h1>
+          </div>
           <ul>{this.renderDays()}</ul>
         </div>
       </>
@@ -84,3 +96,4 @@ class DayIndex extends React.Component {
 }
 
 export default DayIndex;
+

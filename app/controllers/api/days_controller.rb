@@ -29,7 +29,8 @@ class Api::DaysController < ApplicationController
     def update
         @day = Day.find(params[:id])
         if @day.update_attributes(day_params)
-            render 'api/projects/show'
+            
+            render 'api/days/show'
         else
             render json: ["unable to update the day"]
         end
@@ -39,6 +40,6 @@ class Api::DaysController < ApplicationController
 
     private
     def day_params
-        params.require(:day).permit(:comment, :user_id, :day_index, :rating)
+        params.require(:day).permit(:id, :comment, :user_id, :day_index, :rating)
     end
 end

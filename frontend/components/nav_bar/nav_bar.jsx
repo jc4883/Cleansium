@@ -19,7 +19,10 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar">
-        <h1>Cleansium</h1>
+        <div>
+          <img src={window.broom} alt=""/>
+          <h1>Cleansium</h1>
+        </div>
         <button onClick={this.handleLogout}>Logout</button>
       </nav>
     )

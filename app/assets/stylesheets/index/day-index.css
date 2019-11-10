@@ -11,6 +11,19 @@ html {
     background-color: #f6f2ef;
 }
 
+.day-index > div {
+    width: 100%;
+    text-align: center;
+}
+
+.day-index > div > h1 {
+    letter-spacing: .4px;
+  padding: 7px 8px;
+  font-size: 25px;
+  color: #283c46;
+  font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+}
+
 .day-index button {
     width: 30px;
     height: 30px;

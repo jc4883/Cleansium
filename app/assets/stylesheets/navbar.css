@@ -5,11 +5,23 @@ body {
     display: flex;
     justify-content: space-between;
     position: sticky;
-    background: linear-gradient(to bottom, #3a383a, #020102 );
+    background-color: #455f3b;
     width: 100%;
     top: 0;
     z-index: 2;
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
 }
+.navbar > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar > div > img {
+    width: 65px;
+    height: auto;
+}
+
 
 .navbar button {
     width: 63px;
@@ -21,12 +33,18 @@ body {
     margin-bottom: auto;
     color: white;
     border-radius: 15px;
+    transition: .4s;
+}
+
+.navbar button:hover {
+    background-color: darkslategrey;
+    transition: .4s;
 }
 
 .navbar button:focus {
     outline: none;
 }
-.navbar h1 {
+.navbar > div >  h1 {
     color: white;
     margin-left: 33px;
 }

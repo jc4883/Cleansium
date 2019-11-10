@@ -17,6 +17,6 @@ day1 = Day.create!(rating: 5, comment: "it was a great day", user_id: user1.id, 
 day2 = Day.create!(rating: 5, comment: "it was a great day", user_id: user1.id, day_index: 2)
 day3 = Day.create!(rating: 5, comment: "it was a great day", user_id: user1.id, day_index: 3)
 
-day4 = Day.create!(rating: 5, comment: "it was a bad day", user_id: user2.id, day_index: 1)
-day5 = Day.create!(rating: 5, comment: "it was a bad day", user_id: user2.id, day_index: 2)
-day6 = Day.create!(rating: 5, comment: "it was a bad day", user_id: user2.id, day_index: 3)
+day4 = Day.create!(rating: 5, comment: "it was a bad day", user_id: user2.id, day_index: 4)
+day5 = Day.create!(rating: 5, comment: "it was a bad day", user_id: user2.id, day_index: 5)
+day6 = Day.create!(rating: 5, comment: "it was a bad day", user_id: user2.id, day_index: 6)

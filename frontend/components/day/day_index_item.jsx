@@ -19,12 +19,12 @@ class DayIndexItem extends React.Component {
 
   render() {
     if (this.state.toShow) {
-        debugger
-        return <Redirect to={`/days/${this.props.dayId}/form`}/>
+        return <Redirect to={`/days/${this.props.dayId}/updateForm`}/>
     } else if (this.state.toCreate) {
-        debugger
-        return <Redirect to={`/days/${this.props.dayIndex}/form`}/>
+        return <Redirect to={`/days/${this.props.dayIndex}/createForm`}/>
     }
+
+
 
     let buttonHTML = "";
     let comment = "";
@@ -34,14 +34,39 @@ class DayIndexItem extends React.Component {
         buttonHTML = "Edit";
         comment = this.props.comment;
         rating = `Rating: ${this.props.rating}`;
+        if (this.props.rating == null) {
+            rating = 'Rating: none';
+
+        }
     } else {
         buttonHTML = "Submit";
     }
 
+    let ratingColor = "";
+    switch (this.props.rating) {
+        case 1:
+            ratingColor = "green";
+            break;
+        case 2:
+            ratingColor = "yellow";
+            break;
+        case 3:
+            ratingColor = "orange";
+            break;
+        case 4:
+            ratingColor = "indianred";
+            break;
+        case 5:
+            ratingColor = "maroon";
+            break;
+        default:
+            break;
+    }
+
     return (
-        <div className="index-item" onClick={this.handleClick}>
+        <div className={`index-item ${ratingColor}`} onClick={this.handleClick}>
             <h2>Day {this.props.dayIndex}</h2>
-            <h4>{rating}</h4>
+            <h4 className="rating-dynamic">{rating}</h4>
             <button>{buttonHTML}</button>
         </div>
     )

@@ -1,24 +1,64 @@
-form.day-show-form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  /* margin: 0 auto; */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
+.submit-button:focus {
+  outline: none;
+}
+.submit-button:hover {
+  background-color: darkslategrey;
+  transition: .4s !important;
 }
 
-form.day-show-form > * {
-  margin: 10px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  padding: 6px;
+.photos-button:focus {
+  outline: none !important;
 }
+
+.photos-button:hover {
+  background: darkslategrey !important;
+  transition: .4s !important;
+}
+
+.create-day-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+  color: #57bf8f;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0;
+  background-color: white;
+  height: fit-content;
+  margin-top: 24vh;
+}
+
+
+.day-show-form-container {
+    width: 100%;
+    height: fit-content;
+    background-color: #f6f2ef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 110vh;
+}
+
+.day-show-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+    color: #57bf8f;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0;
+    background-color: white;
+    height: fit-content;
+    margin-top: 24vh;
+}
+
+
 
 textarea#comment {
   border-radius: 0px;
@@ -30,4 +70,99 @@ label.file-upload {
 
 input[type="file"] {
   margin: 7px 0;
+}
+
+.rating-container {
+  display: flex;
+  color: mediumspringgreen;
+  flex-direction: row;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  justify-content: center;
+}
+
+.day-show-form > textarea {
+  margin: 0;
+  margin-top: 15px !important;
+}
+
+.rating-container > h1 {
+  
+  margin: 0;
+    font-size: 14px;
+} 
+
+
+#rating {
+  -webkit-appearance: meter;
+  width: 42px;
+  text-align: center;
+  padding-left: 17px;
+  background-color: mediumspringgreen;
+  color: white;
+  font-size: 13px;
+}
+
+
+input[type=text], textarea, input[type=password]{
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+  border-radius: 11px !important;
+  resize: none;
+  letter-spacing: .4px;
+  padding: 7px 8px;
+  font-size: 16px;
+  color: #283c46;
+  font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+}
+ 
+input[type=text]:focus, textarea:focus, #password-input:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  transform: scale(1.01);
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.submit-button {
+    width: 110px;
+    margin: 0 auto;
+    margin-top: 18px;
+    height: 38px;
+    background-color: mediumseagreen;
+    border-radius: 16px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+}
+
+#documents-ul {
+    width: 100%;
+    padding: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    display: flex;
+}
+
+.photos-button {
+    transition: .4s;
+    width: 155px;
+    margin: 0 auto;
+    margin-top: 18px;
+    height: 49px;
+    background-color: lightseagreen;
+    border-radius: 16px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
 }

@@ -25,6 +25,7 @@ const removeDay = id => {
   };
 };
 
+
 export const fetchDays = () => dispatch => {
   return API_Day_Util.fetchDays().then(days => {
     return dispatch(receiveDays(days));
@@ -38,7 +39,6 @@ export const fetchDay = id => dispatch => {
 };
 
 export const createDay = day => dispatch => {
-  debugger;
   return API_Day_Util.createDay(day).then(day => {
     return dispatch(receiveDay(day));
   });
