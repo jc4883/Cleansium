@@ -38,7 +38,7 @@ export const fetchDay = (id) => dispatch => {
 }
 
 export const createDay = (day) => dispatch => {
-  return API_Day_Util.createDay(Day).then(day => {
+  return API_Day_Util.createDay(day).then(day => {
     return dispatch(receiveDay(day))
   });
 }

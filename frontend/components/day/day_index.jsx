@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../nav_bar/nav_bar';
-
+import DayIndexItem from './day_index_item';
 
 class DayIndex extends React.Component {
 
@@ -9,6 +9,7 @@ class DayIndex extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.showDays = this.showDays.bind(this);
     this.renderDays = this.renderDays.bind(this);
+    this.initialRendered = false;
   }
 
   handleLogout() {
@@ -31,23 +32,27 @@ class DayIndex extends React.Component {
   // }
 
   showDays() {
+    
     let dayList = [];
-    for (let i = 0; i < 4; i++) {
-      
+    for (let i = 1; i <= 10; i++) {
       let found = false;
-      for (let j = 0; j < Object.values(this.props.days).length; i++) {        
-        debugger
-        if (i === this.props.days[j].day_index) {
-          dayList.push(<li>WE FOUND ONE!</li>)
+      let dayVals = Object.values(this.props.days);
+      for (let j = 0; j < dayVals.length; j++) {        
+        
+        if (i === dayVals[j].day_index) {
+          let comment = dayVals[j].comment;
+          let rating = dayVals[j].rating;
+          let dayIndex = dayVals[j].day_index;
+          dayList.push(<DayIndexItem comment={comment} rating={rating} dayIndex={dayIndex} submitted="true"/>)
           found = true;
           break;
         } 
       }
       if (found === false) {
-        dayList.push(<li>THIS IS AN LI</li>)
+        dayList.push(<DayIndexItem dayIndex={i} submitted="false" />)
       }
     }
-    debugger
+    
     return dayList;
   }
 
@@ -60,12 +65,13 @@ class DayIndex extends React.Component {
   }
 
   render() {
-    debugger
-    if (!this.props.days) {
+    
+    if (!this.initialRendered) {
+      this.initialRendered = true;
       return null;
     }
 
-    debugger
+    
     return (
       <>
         <div>
