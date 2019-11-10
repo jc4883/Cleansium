@@ -146,6 +146,7 @@ var fetchDay = function fetchDay(id) {
 };
 var createDay = function createDay(day) {
   return function (dispatch) {
+    debugger;
     return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["createDay"](day).then(function (day) {
       return dispatch(receiveDay(day));
     });
@@ -448,11 +449,11 @@ function (_React$Component) {
         className: "day-show-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "rating",
-        value: this.props.rating
+        id: "rating" //value={this.props.rating}
+
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "",
-        disabled: true
+        onChange: this.update("rating")
       }, "--How bad was your craving today--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "1"
       }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -466,7 +467,8 @@ function (_React$Component) {
       }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Comment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         id: "comment",
         placeholder: "Enter text here",
-        value: this.props.comment
+        value: this.props.comment,
+        onChange: this.update("comment")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
       }, this.props.buttonText)));
@@ -606,9 +608,7 @@ function (_React$Component) {
             var comment = dayVals[j].comment;
             var rating = dayVals[j].rating;
             var dayIndex = dayVals[j].day_index;
-            var dayId = dayVals[j].id;
             dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              dayId: dayId,
               comment: comment,
               rating: rating,
               dayIndex: dayIndex,

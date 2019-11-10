@@ -1,7 +1,7 @@
-import React from 'react';
-import NavBar from '../nav_bar/nav_bar';
-import DayIndexItem from './day_index_item';
-import { Link } from 'react-router-dom';
+import React from "react";
+import NavBar from "../nav_bar/nav_bar";
+import DayIndexItem from "./day_index_item";
+import { Link } from "react-router-dom";
 
 class DayIndex extends React.Component {
   constructor(props) {
@@ -32,28 +32,32 @@ class DayIndex extends React.Component {
   // }
 
   showDays() {
-    
     let dayList = [];
     for (let i = 1; i <= 28; i++) {
       let found = false;
       let dayVals = Object.values(this.props.days);
-      for (let j = 0; j < dayVals.length; j++) {        
-        
+      for (let j = 0; j < dayVals.length; j++) {
         if (i === dayVals[j].day_index) {
           let comment = dayVals[j].comment;
           let rating = dayVals[j].rating;
           let dayIndex = dayVals[j].day_index;
-          let dayId = dayVals[j].id;
-          dayList.push(<DayIndexItem dayId={dayId} comment={comment} rating={rating} dayIndex={dayIndex} submitted="true"/>)
+          dayList.push(
+            <DayIndexItem
+              comment={comment}
+              rating={rating}
+              dayIndex={dayIndex}
+              submitted="true"
+            />
+          );
           found = true;
           break;
         }
       }
       if (found === false) {
-        dayList.push(<DayIndexItem dayIndex={i} submitted="false" />)
+        dayList.push(<DayIndexItem dayIndex={i} submitted="false" />);
       }
     }
-    
+
     return dayList;
   }
 
@@ -64,13 +68,11 @@ class DayIndex extends React.Component {
   }
 
   render() {
-    
     if (!this.initialRendered) {
       this.initialRendered = true;
       return null;
     }
 
-    
     return (
       <>
         <div className="day-index">

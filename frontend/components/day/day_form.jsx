@@ -19,21 +19,31 @@ class DayForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const day = Object.assign({}, this.state, { day_index: this.props.dayIndex});
-    const dayWithUserId = Object.assign({}, day, { user_id: this.props.currentUser.id })
+
+    const day = Object.assign({}, this.state, {
+      day_index: this.props.dayIndex
+    });
+    const dayWithUserId = Object.assign({}, day, {
+      user_id: this.props.currentUser.id
+    });
+
     this.props.processForm(dayWithUserId);
   }
 
   render() {
-    debugger
+    debugger;
     return (
       <div>
         <form className="day-show-form" onSubmit={this.handleSubmit}>
           {/* rating */}
           <label>Rating</label>
           {/* dropdown  */}
-          <select id="rating" value={this.props.rating}>
-            <option value="" disabled>
+          <select
+            id="rating"
+
+            //value={this.props.rating}
+          >
+            <option value="" onChange={this.update("rating")}>
               --How bad was your craving today--
             </option>
             <option value="1">1</option>
@@ -48,6 +58,7 @@ class DayForm extends React.Component {
             id="comment"
             placeholder="Enter text here"
             value={this.props.comment}
+            onChange={this.update("comment")}
           ></textarea>
           {/* conditional button  */}
           <button type="submit">{this.props.buttonText}</button>
