@@ -34,7 +34,7 @@ class DayIndex extends React.Component {
   showDays() {
     
     let dayList = [];
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 28; i++) {
       let found = false;
       let dayVals = Object.values(this.props.days);
       for (let j = 0; j < dayVals.length; j++) {        
@@ -73,12 +73,10 @@ class DayIndex extends React.Component {
     
     return (
       <>
-        <div>
-          <Link to="/days/form">This is a link to the create form</Link>
-          HERE
+        <div className="day-index">
           <button onClick={this.handleLogout}></button>
+          <ul>{this.renderDays()}</ul>
         </div>
-        <ul>{this.renderDays()}</ul>
       </>
     );
   }

@@ -39,11 +39,11 @@ class DayIndexItem extends React.Component {
     }
 
     return (
-        <div className="index_item" onClick={this.handleClick}>
-            <button>{buttonHTML}</button>
+        <div className="index-item" onClick={this.handleClick}>
             <h2>Day {this.props.dayIndex}</h2>
             <h3>{comment}</h3>
             <h3>{rating}</h3>
+            <button>{buttonHTML}</button>
         </div>
     )
   }

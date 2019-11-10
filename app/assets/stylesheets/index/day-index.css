@@ -1,0 +1,23 @@
+html {
+    font-family: "Avenir Light", Helvetica, Arial, sans-serif;
+}
+
+.day-index {
+    width: 100%;
+    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.day-index button {
+    width: 30px;
+    height: 30px;
+}
+
+.day-index ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}

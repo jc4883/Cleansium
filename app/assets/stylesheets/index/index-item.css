@@ -1,0 +1,9 @@
+.index-item {
+    display: flex;
+    width: 12%;
+    height: 22vh;
+    margin: 1%;
+    flex-direction: column;
+    align-content: center;
+    border: 1px solid black;
+}

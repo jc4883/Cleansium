@@ -309,7 +309,7 @@ var App = function App() {
     component: _day_day_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
     exact: true,
-    path: "/days/form",
+    path: "/days/:day_index/form",
     component: _day_create_day_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
     exact: true,
@@ -345,7 +345,9 @@ var mapStateToProp = function mapStateToProp(state, ownProps) {
   return {
     // currentUser: state.entities.users[state.session.id]
     formType: "create",
-    buttonText: "Create entry"
+    buttonText: "Create entry",
+    dayIndex: ownProps.match.params.day_index,
+    currentUser: state.entities.users[state.session.id]
   };
 };
 
@@ -430,12 +432,18 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var day = Object.assign({}, this.state);
-      this.props.processForm(day);
+      var day = Object.assign({}, this.state, {
+        day_index: this.props.dayIndex
+      });
+      var dayWithUserId = Object.assign({}, day, {
+        user_id: this.props.currentUser.id
+      });
+      this.props.processForm(dayWithUserId);
     }
   }, {
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "day-show-form",
         onSubmit: this.handleSubmit
@@ -520,7 +528,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../nav_bar/nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _day_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./day_index_item */ "./frontend/components/day/day_index_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -543,6 +552,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var DayIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -557,6 +567,7 @@ function (_React$Component) {
     _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     _this.showDays = _this.showDays.bind(_assertThisInitialized(_this));
     _this.renderDays = _this.renderDays.bind(_assertThisInitialized(_this));
+    _this.initialRendered = false;
     return _this;
   }
 
@@ -586,25 +597,36 @@ function (_React$Component) {
     value: function showDays() {
       var dayList = [];
 
-      for (var i = 0; i < 4; i++) {
+      for (var i = 1; i <= 28; i++) {
         var found = false;
+        var dayVals = Object.values(this.props.days);
 
-        for (var j = 0; j < Object.values(this.props.days).length; i++) {
-          debugger;
-
-          if (i === this.props.days[j].day_index) {
-            dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "WE FOUND ONE!"));
+        for (var j = 0; j < dayVals.length; j++) {
+          if (i === dayVals[j].day_index) {
+            var comment = dayVals[j].comment;
+            var rating = dayVals[j].rating;
+            var dayIndex = dayVals[j].day_index;
+            var dayId = dayVals[j].id;
+            dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              dayId: dayId,
+              comment: comment,
+              rating: rating,
+              dayIndex: dayIndex,
+              submitted: "true"
+            }));
             found = true;
             break;
           }
         }
 
         if (found === false) {
-          dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "THIS IS AN LI"));
+          dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            dayIndex: i,
+            submitted: "false"
+          }));
         }
       }
 
-      debugger;
       return dayList;
     }
   }, {
@@ -617,18 +639,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
-
-      if (!this.props.days) {
+      if (!this.initialRendered) {
+        this.initialRendered = true;
         return null;
       }
 
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/days/form"
-      }, "This is a link to the create form"), "HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "day-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleLogout
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays()));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays())));
     }
   }]);
 
@@ -680,6 +700,114 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_day_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/day/day_index_item.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/day/day_index_item.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var DayIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DayIndexItem, _React$Component);
+
+  function DayIndexItem(props) {
+    var _this;
+
+    _classCallCheck(this, DayIndexItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayIndexItem).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.state = {
+      toCreate: false,
+      toShow: false
+    };
+    return _this;
+  }
+
+  _createClass(DayIndexItem, [{
+    key: "handleClick",
+    value: function handleClick() {
+      if (this.props.submitted === "true") {
+        this.setState({
+          toShow: true
+        });
+      } else {
+        this.setState({
+          toCreate: true
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.toShow) {
+        debugger;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+          to: "/days/".concat(this.props.dayId, "/form")
+        });
+      } else if (this.state.toCreate) {
+        debugger;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+          to: "/days/".concat(this.props.dayIndex, "/form")
+        });
+      }
+
+      var buttonHTML = "";
+      var comment = "";
+      var rating = "";
+
+      if (this.props.submitted === "true") {
+        buttonHTML = "Edit";
+        comment = this.props.comment;
+        rating = this.props.rating;
+      } else {
+        buttonHTML = "Submit";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-item",
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, comment), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML));
+    }
+  }]);
+
+  return DayIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (DayIndexItem);
 
 /***/ }),
 
@@ -3065,20 +3193,6 @@ module.exports = invariant;
 
 /***/ }),
 
-/***/ "./node_modules/isarray/index.js":
-/*!***************************************!*\
-  !*** ./node_modules/isarray/index.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/mini-create-react-context/dist/esm/index.js":
 /*!******************************************************************!*\
   !*** ./node_modules/mini-create-react-context/dist/esm/index.js ***!
@@ -3385,7 +3499,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
+var isarray = __webpack_require__(/*! isarray */ "./node_modules/path-to-regexp/node_modules/isarray/index.js")
 
 /**
  * Expose `pathToRegexp`.
@@ -3811,6 +3925,20 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/path-to-regexp/node_modules/isarray/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/path-to-regexp/node_modules/isarray/index.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),
