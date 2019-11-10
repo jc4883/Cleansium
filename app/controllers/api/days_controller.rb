@@ -7,9 +7,12 @@ class Api::DaysController < ApplicationController
     def create
         
         @day = Day.new(day_params)
+        debugger
         if @day.save
+            debugger
             render "api/days/show"
         else
+            debugger
             render json: ["Try creating day at a later time."]
         end
     end
