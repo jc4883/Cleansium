@@ -20,8 +20,10 @@ class DayForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const day = Object.assign({}, this.state, { day_index: this.props.dayIndex});
+    const dayWithUserId = Object.assign({}, day, { user_id: this.props.currentUser.id })
     debugger
-    this.props.processForm(day);
+    debugger
+    this.props.processForm(dayWithUserId);
   }
 
   render() {
