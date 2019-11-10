@@ -19,7 +19,7 @@ const App = () => (
       <ProtectedRoute exact path="/days" component={DayIndexContainer} />
       <ProtectedRoute
         exact
-        path="/days/form"
+        path="/days/:day_index/form"
         component={CreateDayFormContainer}
       />
       <ProtectedRoute

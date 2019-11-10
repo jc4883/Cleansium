@@ -310,7 +310,7 @@ var App = function App() {
     component: _day_day_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
     exact: true,
-    path: "/days/form",
+    path: "/days/:day_index/form",
     component: _day_create_day_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
     exact: true,
@@ -346,7 +346,8 @@ var mapStateToProp = function mapStateToProp(state, ownProps) {
   return {
     // currentUser: state.entities.users[state.session.id]
     formType: "create",
-    buttonText: "Create entry"
+    buttonText: "Create entry",
+    dayIndex: ownProps.match.params.day_index
   };
 };
 
@@ -371,142 +372,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./frontend/components/day/day_form.jsx ***!
   \**********************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var DayForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(DayForm, _React$Component);
-
-  function DayForm(props) {
-    var _this;
-
-    _classCallCheck(this, DayForm);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayForm).call(this, props));
-    _this.state = {
-      rating: _this.props.day === undefined ? null : _this.props.day.rating,
-      comment: _this.props.day === undefined ? "" : _this.props.day.comment
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(DayForm, [{
-    key: "update",
-    value: function update(field) {
-      var _this2 = this;
-
-      return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      var day = Object.assign({}, this.state);
-      this.props.processForm(day).then(this.props.history.push("/days"));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "day-show-form",
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "rating" //value={this.props.rating}
-
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "",
-        onChange: this.update("rating")
-      }, "--How bad was your craving today--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3"
-      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "4"
-      }, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "5"
-      }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Comment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        id: "comment",
-        placeholder: "Enter text here",
-        value: this.props.comment,
-        onChange: this.update("comment")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
-      }, this.props.buttonText)));
-    }
-  }]);
-
-  return DayForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // export default DayShow = props => {
-//   return (
-//     <div>
-//       <form className="day-show-form">
-//         {/* rating */}
-//         <label>Rating</label>
-//         {/* dropdown  */}
-//         {/* comment  */}
-//         <label id="comment">Comment</label>
-//         <textarea name="" id="comment" placeholder="Enter text here"></textarea>
-//         {/* update button  */}
-//       </form>
-//     </div>
-//   );
-// };
-// class ThingsIndex extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleLogout = this.handleLogout.bind(this);
-//   }
-//   handleLogout() {
-//     this.props.logout();
-//   }
-//   componentDidMount() {}
-//   handleLogout() {
-//     this.props.logout();
-//   }
-//   render() {
-//     return (
-//       <>
-//         <div>HERE AT THINGS INDEX</div>
-//         <button onClick={this.handleLogout}></button>
-//       </>
-//     );
-//   }
-// }
-
-
-/* harmony default export */ __webpack_exports__["default"] = (DayForm);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/jonathan/Documents/Cleansium/frontend/components/day/day_form.jsx: Unexpected token (22:1)\n\n\u001b[0m \u001b[90m 20 | \u001b[39m  handleSubmit(e) {\u001b[0m\n\u001b[0m \u001b[90m 21 | \u001b[39m    e\u001b[33m.\u001b[39mpreventDefault()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m    \u001b[36mconst\u001b[39m day \u001b[33m=\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39massign({}\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mprocessForm(day)\u001b[33m.\u001b[39mthen(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mhistory\u001b[33m.\u001b[39mpush(\u001b[32m`/days`\u001b[39m))\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n    at Object.raise (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:6930:17)\n    at Object.unexpected (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8323:16)\n    at Object.jsxParseIdentifier (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3856:12)\n    at Object.jsxParseNamespacedName (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3866:23)\n    at Object.jsxParseElementName (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3877:21)\n    at Object.jsxParseOpeningElementAt (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3963:22)\n    at Object.jsxParseElementAt (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3996:33)\n    at Object.jsxParseElement (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:4070:17)\n    at Object.parseExprAtom (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:4077:19)\n    at Object.parseExprSubscripts (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:9165:23)\n    at Object.parseMaybeUnary (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:9145:21)\n    at Object.parseExprOps (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:9011:23)\n    at Object.parseMaybeConditional (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8984:23)\n    at Object.parseMaybeAssign (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8930:21)\n    at Object.parseExpression (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8880:23)\n    at Object.parseStatementContent (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10740:23)\n    at Object.parseStatement (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10611:17)\n    at Object.parseBlockOrModuleBlockBody (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11187:25)\n    at Object.parseBlockBody (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11174:10)\n    at Object.parseBlock (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11158:10)\n    at Object.parseFunctionBody (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10177:24)\n    at Object.parseFunctionBodyAndFinish (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10147:10)\n    at Object.parseMethod (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10101:10)\n    at Object.pushClassMethod (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11591:30)\n    at Object.parseClassMemberWithIsStatic (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11511:12)\n    at Object.parseClassMember (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11453:10)\n    at withTopicForbiddingContext (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11408:14)\n    at Object.withTopicForbiddingContext (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10486:14)\n    at Object.parseClassBody (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11385:10)\n    at Object.parseClass (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11359:22)");
 
 /***/ }),
 
@@ -515,139 +383,9 @@ function (_React$Component) {
   !*** ./frontend/components/day/day_index.jsx ***!
   \***********************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../nav_bar/nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
-/* harmony import */ var _day_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./day_index_item */ "./frontend/components/day/day_index_item.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var DayIndex =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(DayIndex, _React$Component);
-
-  function DayIndex(props) {
-    var _this;
-
-    _classCallCheck(this, DayIndex);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayIndex).call(this, props));
-    _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
-    _this.showDays = _this.showDays.bind(_assertThisInitialized(_this));
-    _this.renderDays = _this.renderDays.bind(_assertThisInitialized(_this));
-    _this.initialRendered = false;
-    return _this;
-  }
-
-  _createClass(DayIndex, [{
-    key: "handleLogout",
-    value: function handleLogout() {
-      this.props.logout();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchDays();
-    }
-  }, {
-    key: "handleLogout",
-    value: function handleLogout() {
-      this.props.logout();
-    } // dayIncude?(arr) {
-    //   let include = false;
-    //   for (let i = 0; i < arr.length; i++) {
-    //     if (arr[i].day_index)
-    //   }
-    // }
-
-  }, {
-    key: "showDays",
-    value: function showDays() {
-      var dayList = [];
-
-      for (var i = 1; i <= 10; i++) {
-        var found = false;
-        var dayVals = Object.values(this.props.days);
-
-        for (var j = 0; j < dayVals.length; j++) {
-          if (i === dayVals[j].day_index) {
-            var comment = dayVals[j].comment;
-            var rating = dayVals[j].rating;
-            var dayIndex = dayVals[j].day_index;
-            dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              comment: comment,
-              rating: rating,
-              dayIndex: dayIndex,
-              submitted: "true"
-            }));
-            found = true;
-            break;
-          }
-        }
-
-        if (found === false) {
-          dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            dayIndex: i,
-            submitted: "false"
-          }));
-        }
-      }
-
-      return dayList;
-    }
-  }, {
-    key: "renderDays",
-    value: function renderDays() {
-      return this.showDays().map(function (ele) {
-        return ele;
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (!this.initialRendered) {
-        this.initialRendered = true;
-        return null;
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/days/form"
-      }, "This is a link to the create form"), "HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleLogout
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays()));
-    }
-  }]);
-
-  return DayIndex;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (DayIndex);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/jonathan/Documents/Cleansium/frontend/components/day/day_index.jsx: Unexpected token (1:1)\n\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m from \u001b[32m\"react\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mNavBar\u001b[39m from \u001b[32m\"../nav_bar/nav_bar\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mDayIndexItem\u001b[39m from \u001b[32m\"./day_index_item\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object.raise (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:6930:17)\n    at Object.unexpected (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8323:16)\n    at Object.jsxParseIdentifier (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3856:12)\n    at Object.jsxParseNamespacedName (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3866:23)\n    at Object.jsxParseElementName (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3877:21)\n    at Object.jsxParseOpeningElementAt (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3963:22)\n    at Object.jsxParseElementAt (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:3996:33)\n    at Object.jsxParseElement (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:4070:17)\n    at Object.parseExprAtom (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:4077:19)\n    at Object.parseExprSubscripts (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:9165:23)\n    at Object.parseMaybeUnary (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:9145:21)\n    at Object.parseExprOps (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:9011:23)\n    at Object.parseMaybeConditional (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8984:23)\n    at Object.parseMaybeAssign (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8930:21)\n    at Object.parseExpression (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:8880:23)\n    at Object.parseStatementContent (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10740:23)\n    at Object.parseStatement (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10611:17)\n    at Object.parseBlockOrModuleBlockBody (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11187:25)\n    at Object.parseBlockBody (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:11174:10)\n    at Object.parseTopLevel (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:10542:10)\n    at Object.parse (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:12051:10)\n    at parse (/home/jonathan/Documents/Cleansium/node_modules/@babel/parser/lib/index.js:12102:38)\n    at parser (/home/jonathan/Documents/Cleansium/node_modules/@babel/core/lib/transformation/normalize-file.js:168:34)\n    at normalizeFile (/home/jonathan/Documents/Cleansium/node_modules/@babel/core/lib/transformation/normalize-file.js:102:11)\n    at runSync (/home/jonathan/Documents/Cleansium/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/jonathan/Documents/Cleansium/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/home/jonathan/Documents/Cleansium/node_modules/@babel/core/lib/transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
 
 /***/ }),
 
@@ -692,91 +430,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_day_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
-
-/***/ }),
-
-/***/ "./frontend/components/day/day_index_item.jsx":
-/*!****************************************************!*\
-  !*** ./frontend/components/day/day_index_item.jsx ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var DayIndexItem =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(DayIndexItem, _React$Component);
-
-  function DayIndexItem(props) {
-    var _this;
-
-    _classCallCheck(this, DayIndexItem);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayIndexItem).call(this, props));
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-    _this.state = {
-      toShow: false
-    };
-    return _this;
-  }
-
-  _createClass(DayIndexItem, [{
-    key: "handleClick",
-    value: function handleClick() {
-      this.setState({
-        toShow: true
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var buttonHTML = "";
-
-      if (this.props.submitted === "true") {
-        buttonHTML = "Edit";
-      } else {
-        buttonHTML = "Submit";
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index_item",
-        onClick: this.handleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex));
-    }
-  }]);
-
-  return DayIndexItem;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (DayIndexItem);
 
 /***/ }),
 
@@ -858,100 +511,6 @@ var Greeting = function Greeting(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Greeting);
-
-/***/ }),
-
-/***/ "./frontend/components/nav_bar/nav_bar.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/nav_bar/nav_bar.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var NavBar =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(NavBar, _React$Component);
-
-  function NavBar(props) {
-    var _this;
-
-    _classCallCheck(this, NavBar);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
-    _this.handleDropDown = _this.handleDropDown.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(NavBar, [{
-    key: "handleDropDown",
-    value: function handleDropDown() {
-      document.getElementById("avatar-dropdown").classList.toggle("show"); //document.getElementById("triangle-boy").classList.toggle("show-triangle-boy")
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-dark bg-dark d-flex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "navbar-brand"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "d-inline-block align-top",
-        width: "30px",
-        height: "30px",
-        src: "https://github.com/jc4883/AnimationDemo/blob/master/src/assets/wall.png?raw=true"
-      }), "Therapose"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "navbar-toggler",
-        type: "button",
-        "data-toggle": "collapse",
-        "data-target": "#navbarSupportedContent"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "collapse navbar-collapse",
-        id: "navbarSupportedContent"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "nav-link",
-        onClick: this.props.logout
-      }, "logout")))));
-    }
-  }]);
-
-  return NavBar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (NavBar);
 
 /***/ }),
 
@@ -1551,7 +1110,6 @@ var daysReducer = function daysReducer() {
 
   switch (action.type) {
     case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_DAYS"]:
-      debugger;
       return Object.assign({}, action.days);
 
     case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DAY"]:
