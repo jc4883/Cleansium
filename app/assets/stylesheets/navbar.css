@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    background: linear-gradient(to bottom, #3a383a, #020102 );
+    width: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+.navbar button {
+    width: 63px;
+    background-color: indianred;
+    border: none;
+    margin-right: 33px;
+    height: 31px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: white;
+    border-radius: 15px;
+}
+
+.navbar button:focus {
+    outline: none;
+}
+.navbar h1 {
+    color: white;
+    margin-left: 33px;
+}

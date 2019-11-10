@@ -8,6 +8,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-color: #f6f2ef;
 }
 
 .day-index button {

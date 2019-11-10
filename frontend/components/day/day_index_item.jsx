@@ -33,7 +33,7 @@ class DayIndexItem extends React.Component {
     if (this.props.submitted === "true") {
         buttonHTML = "Edit";
         comment = this.props.comment;
-        rating = this.props.rating;
+        rating = `Rating: ${this.props.rating}`;
     } else {
         buttonHTML = "Submit";
     }
@@ -41,8 +41,7 @@ class DayIndexItem extends React.Component {
     return (
         <div className="index-item" onClick={this.handleClick}>
             <h2>Day {this.props.dayIndex}</h2>
-            <h3>{comment}</h3>
-            <h3>{rating}</h3>
+            <h4>{rating}</h4>
             <button>{buttonHTML}</button>
         </div>
     )

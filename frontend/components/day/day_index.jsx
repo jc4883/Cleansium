@@ -20,9 +20,7 @@ class DayIndex extends React.Component {
     this.props.fetchDays();
   }
 
-  handleLogout() {
-    this.props.logout();
-  }
+  
 
   // dayIncude?(arr) {
   //   let include = false;
@@ -41,12 +39,14 @@ class DayIndex extends React.Component {
           let comment = dayVals[j].comment;
           let rating = dayVals[j].rating;
           let dayIndex = dayVals[j].day_index;
+          let dayId = dayVals[j].id;
           dayList.push(
             <DayIndexItem
               comment={comment}
               rating={rating}
               dayIndex={dayIndex}
               submitted="true"
+              dayId = {dayId}
             />
           );
           found = true;
@@ -72,11 +72,10 @@ class DayIndex extends React.Component {
       this.initialRendered = true;
       return null;
     }
-
     return (
       <>
+        <NavBar logout={this.props.logout} />
         <div className="day-index">
-          <button onClick={this.handleLogout}></button>
           <ul>{this.renderDays()}</ul>
         </div>
       </>

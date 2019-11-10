@@ -5,5 +5,38 @@
     margin: 1%;
     flex-direction: column;
     align-content: center;
-    border: 1px solid black;
+    position: relative;
+    background:white;
+    border-radius: 5px;
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+    color: #57bf8f;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.index-item h4 {
+    margin: 0;
+    font-weight: 300;
+    color: #d2b48c;
+}
+
+.index-item button {
+    width: fit-content;
+    height: auto;
+    position: absolute;
+    bottom: 9px;
+    left: 9px;
+    color: white;
+    border: none;
+    background-color: #57bf8f;
+    padding: 7px 16px;
+    outline: 2px solid tan;
+    outline-offset: -4px;
+    transition: all .3s;
+}
+
+.index-item button:hover {
+    background: tan;
+    outline: 2px solid #57bf8f;
+    transition: all .3s;
 }
