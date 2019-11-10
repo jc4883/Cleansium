@@ -444,15 +444,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "day-show-form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "rating",
         onChange: this.update("rating"),
         value: this.props.rating
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: ""
+        value: "",
+        disabled: true,
+        selected: true
       }, "--How bad was your craving today--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "1"
       }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -463,55 +467,19 @@ function (_React$Component) {
         value: "4"
       }, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "5"
-      }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Comment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", (_React$createElement = {
         id: "comment",
         placeholder: "Enter text here",
         value: this.props.comment,
         onChange: this.update("comment")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, _defineProperty(_React$createElement, "placeholder", "How were your cravings"), _defineProperty(_React$createElement, "cols", "30"), _defineProperty(_React$createElement, "rows", "10"), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
       }, this.props.buttonText)));
     }
   }]);
 
   return DayForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // export default DayShow = props => {
-//   return (
-//     <div>
-//       <form className="day-show-form">
-//         {/* rating */}
-//         <label>Rating</label>
-//         {/* dropdown  */}
-//         {/* comment  */}
-//         <label id="comment">Comment</label>
-//         <textarea name="" id="comment" placeholder="Enter text here"></textarea>
-//         {/* update button  */}
-//       </form>
-//     </div>
-//   );
-// };
-// class ThingsIndex extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleLogout = this.handleLogout.bind(this);
-//   }
-//   handleLogout() {
-//     this.props.logout();
-//   }
-//   componentDidMount() {}
-//   handleLogout() {
-//     this.props.logout();
-//   }
-//   render() {
-//     return (
-//       <>
-//         <div>HERE AT THINGS INDEX</div>
-//         <button onClick={this.handleLogout}></button>
-//       </>
-//     );
-//   }
-// }
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (DayForm);
 
