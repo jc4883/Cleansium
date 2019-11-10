@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 import { createDay, updateDay } from "../../actions/day_actions";
 
 const mapStateToProp = (state, ownProps) => {
+  debugger;
   return {
     // currentUser: state.entities.users[state.session.id]
+
     formType: "update",
     buttonText: "Update entry"
   };

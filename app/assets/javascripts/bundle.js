@@ -439,21 +439,20 @@ function (_React$Component) {
       var dayWithUserId = Object.assign({}, day, {
         user_id: this.props.currentUser.id
       });
-      this.props.processForm(dayWithUserId);
+      this.props.processForm(dayWithUserId).then(this.props.history.push("/days"));
     }
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "day-show-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "rating" //value={this.props.rating}
-
+        id: "rating",
+        onChange: this.update("rating"),
+        value: this.props.rating
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "",
-        onChange: this.update("rating")
+        value: ""
       }, "--How bad was your craving today--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "1"
       }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -831,6 +830,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProp = function mapStateToProp(state, ownProps) {
+  debugger;
   return {
     // currentUser: state.entities.users[state.session.id]
     formType: "update",
@@ -34352,7 +34352,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
