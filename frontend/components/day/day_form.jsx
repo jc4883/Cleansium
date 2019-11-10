@@ -28,7 +28,7 @@ class DayForm extends React.Component {
       <div>
         <form className="day-show-form" onSubmit={this.handleSubmit}>
           {/* rating */}
-          <label for="rating">Rating</label>
+          <label>Rating</label>
           {/* dropdown  */}
           <select id="rating" value={this.props.rating}>
             <option value="" disabled>
@@ -41,7 +41,7 @@ class DayForm extends React.Component {
             <option value="5">5</option>
           </select>
           {/* comment  */}
-          <label for="comment">Comment</label>
+          <label>Comment</label>
           <textarea
             id="comment"
             placeholder="Enter text here"

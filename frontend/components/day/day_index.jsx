@@ -3,7 +3,6 @@ import NavBar from '../nav_bar/nav_bar';
 import DayIndexItem from './day_index_item';
 
 class DayIndex extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
@@ -17,10 +16,10 @@ class DayIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchDays();  
+    this.props.fetchDays();
   }
 
-  handleLogout(){
+  handleLogout() {
     this.props.logout();
   }
 
@@ -46,7 +45,7 @@ class DayIndex extends React.Component {
           dayList.push(<DayIndexItem comment={comment} rating={rating} dayIndex={dayIndex} submitted="true"/>)
           found = true;
           break;
-        } 
+        }
       }
       if (found === false) {
         dayList.push(<DayIndexItem dayIndex={i} submitted="false" />)
@@ -57,11 +56,9 @@ class DayIndex extends React.Component {
   }
 
   renderDays() {
-      return this.showDays().map((ele) => {
-          return (
-              ele
-          );
-      });
+    return this.showDays().map(ele => {
+      return ele;
+    });
   }
 
   render() {
@@ -75,18 +72,14 @@ class DayIndex extends React.Component {
     return (
       <>
         <div>
+          <Link to="/days/form">This is a link to the create form</Link>
           HERE
           <button onClick={this.handleLogout}></button>
         </div>
-        <ul>
-          {this.renderDays()}
-        </ul>
+        <ul>{this.renderDays()}</ul>
       </>
-    )
+    );
   }
 }
 
 export default DayIndex;
-
-
-
