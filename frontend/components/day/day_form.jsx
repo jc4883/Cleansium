@@ -37,14 +37,16 @@ class DayForm extends React.Component {
       <div>
         <form className="day-show-form" onSubmit={this.handleSubmit}>
           {/* rating */}
-          <label>Rating</label>
+          {/* <label>Rating</label> */}
           {/* dropdown  */}
           <select
             id="rating"
             onChange={this.update("rating")}
             value={this.props.rating}
           >
-            <option value="">--How bad was your craving today--</option>
+            <option value="" disabled selected>
+              --How bad was your craving today--
+            </option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -52,13 +54,21 @@ class DayForm extends React.Component {
             <option value="5">5</option>
           </select>
           {/* comment  */}
-          <label>Comment</label>
+          {/* <label>Comment</label> */}
           <textarea
             id="comment"
             placeholder="Enter text here"
             value={this.props.comment}
             onChange={this.update("comment")}
+            placeholder="How were your cravings"
+            cols="30"
+            rows="10"
           ></textarea>
+          {/* photo upload doesn't go anywhere yet */}
+          <label className="file-upload">
+            Upload photo:
+            <input type="file" multiple />
+          </label>
           {/* conditional button  */}
           <button type="submit">{this.props.buttonText}</button>
         </form>
@@ -66,49 +76,4 @@ class DayForm extends React.Component {
     );
   }
 }
-
-// export default DayShow = props => {
-//   return (
-//     <div>
-//       <form className="day-show-form">
-//         {/* rating */}
-//         <label>Rating</label>
-//         {/* dropdown  */}
-
-//         {/* comment  */}
-//         <label id="comment">Comment</label>
-//         <textarea name="" id="comment" placeholder="Enter text here"></textarea>
-
-//         {/* update button  */}
-//       </form>
-//     </div>
-//   );
-// };
-
-// class ThingsIndex extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleLogout = this.handleLogout.bind(this);
-//   }
-
-//   handleLogout() {
-//     this.props.logout();
-//   }
-
-//   componentDidMount() {}
-
-//   handleLogout() {
-//     this.props.logout();
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         <div>HERE AT THINGS INDEX</div>
-//         <button onClick={this.handleLogout}></button>
-//       </>
-//     );
-//   }
-// }
-
 export default DayForm;
