@@ -1,0 +1,21 @@
+form.day-show-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  /* margin: 0 auto; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+form.day-show-form > * {
+  margin: 10px;
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+textarea#comment {
+  border-radius: 0px;
+}
