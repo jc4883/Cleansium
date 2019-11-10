@@ -598,7 +598,7 @@ function (_React$Component) {
     value: function showDays() {
       var dayList = [];
 
-      for (var i = 1; i <= 10; i++) {
+      for (var i = 1; i <= 28; i++) {
         var found = false;
         var dayVals = Object.values(this.props.days);
 
@@ -643,11 +643,11 @@ function (_React$Component) {
         return null;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/days/form"
-      }, "This is a link to the create form"), "HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "day-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleLogout
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays()));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.renderDays())));
     }
   }]);
 
@@ -797,9 +797,9 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index_item",
+        className: "index-item",
         onClick: this.handleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, comment), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, rating));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, comment), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML));
     }
   }]);
 

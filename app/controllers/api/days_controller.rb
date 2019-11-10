@@ -5,12 +5,23 @@ class Api::DaysController < ApplicationController
     end
 
     def create
+<<<<<<< HEAD
         @day = Day.new(day_params)
         if @day.save
 
             render "api/days/show"
         else
 
+=======
+        # debugger
+        @day = Day.new(day_params)
+        # debugger
+        if @day.save
+            # debugger
+            render "api/days/show"
+        else
+            # debugger
+>>>>>>> d90f7ea057701819741637c17af0f3929a52c634
             render json: ["Try creating day at a later time."]
         end
     end
