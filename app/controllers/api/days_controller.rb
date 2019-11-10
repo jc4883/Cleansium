@@ -5,6 +5,7 @@ class Api::DaysController < ApplicationController
     end
 
     def create
+        
         @day = Day.new(day_params)
         if @day.save
             render "api/days/show"

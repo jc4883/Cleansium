@@ -146,6 +146,7 @@ var fetchDay = function fetchDay(id) {
 };
 var createDay = function createDay(day) {
   return function (dispatch) {
+    debugger;
     return _util_days_api_util__WEBPACK_IMPORTED_MODULE_0__["createDay"](day).then(function (day) {
       return dispatch(receiveDay(day));
     });
@@ -431,7 +432,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var day = Object.assign({}, this.state);
-      this.props.processForm(day);
+      this.props.processForm(day).then(this.props.history.push("/days"));
     }
   }, {
     key: "render",
@@ -440,11 +441,11 @@ function (_React$Component) {
         className: "day-show-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "rating",
-        value: this.props.rating
+        id: "rating" //value={this.props.rating}
+
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "",
-        disabled: true
+        onChange: this.update("rating")
       }, "--How bad was your craving today--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "1"
       }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -458,7 +459,8 @@ function (_React$Component) {
       }, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Comment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         id: "comment",
         placeholder: "Enter text here",
-        value: this.props.comment
+        value: this.props.comment,
+        onChange: this.update("comment")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
       }, this.props.buttonText)));
@@ -520,7 +522,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../nav_bar/nav_bar */ "./frontend/components/nav_bar/nav_bar.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _day_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./day_index_item */ "./frontend/components/day/day_index_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -543,6 +546,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var DayIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -557,6 +561,7 @@ function (_React$Component) {
     _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     _this.showDays = _this.showDays.bind(_assertThisInitialized(_this));
     _this.renderDays = _this.renderDays.bind(_assertThisInitialized(_this));
+    _this.initialRendered = false;
     return _this;
   }
 
@@ -586,25 +591,34 @@ function (_React$Component) {
     value: function showDays() {
       var dayList = [];
 
-      for (var i = 0; i < 4; i++) {
+      for (var i = 1; i <= 10; i++) {
         var found = false;
+        var dayVals = Object.values(this.props.days);
 
-        for (var j = 0; j < Object.values(this.props.days).length; i++) {
-          debugger;
-
-          if (i === this.props.days[j].day_index) {
-            dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "WE FOUND ONE!"));
+        for (var j = 0; j < dayVals.length; j++) {
+          if (i === dayVals[j].day_index) {
+            var comment = dayVals[j].comment;
+            var rating = dayVals[j].rating;
+            var dayIndex = dayVals[j].day_index;
+            dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              comment: comment,
+              rating: rating,
+              dayIndex: dayIndex,
+              submitted: "true"
+            }));
             found = true;
             break;
           }
         }
 
         if (found === false) {
-          dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "THIS IS AN LI"));
+          dayList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_day_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            dayIndex: i,
+            submitted: "false"
+          }));
         }
       }
 
-      debugger;
       return dayList;
     }
   }, {
@@ -617,14 +631,12 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
-
-      if (!this.props.days) {
+      if (!this.initialRendered) {
+        this.initialRendered = true;
         return null;
       }
 
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/days/form"
       }, "This is a link to the create form"), "HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleLogout
@@ -680,6 +692,91 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProp, mapDispatchToProps)(_day_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/day/day_index_item.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/day/day_index_item.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var DayIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DayIndexItem, _React$Component);
+
+  function DayIndexItem(props) {
+    var _this;
+
+    _classCallCheck(this, DayIndexItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DayIndexItem).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.state = {
+      toShow: false
+    };
+    return _this;
+  }
+
+  _createClass(DayIndexItem, [{
+    key: "handleClick",
+    value: function handleClick() {
+      this.setState({
+        toShow: true
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var buttonHTML = "";
+
+      if (this.props.submitted === "true") {
+        buttonHTML = "Edit";
+      } else {
+        buttonHTML = "Submit";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index_item",
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, buttonHTML), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Day ", this.props.dayIndex));
+    }
+  }]);
+
+  return DayIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (DayIndexItem);
 
 /***/ }),
 
@@ -1454,6 +1551,7 @@ var daysReducer = function daysReducer() {
 
   switch (action.type) {
     case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_DAYS"]:
+      debugger;
       return Object.assign({}, action.days);
 
     case _actions_day_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DAY"]:

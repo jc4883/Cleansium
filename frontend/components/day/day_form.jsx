@@ -20,7 +20,7 @@ class DayForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const day = Object.assign({}, this.state);
-    this.props.processForm(day);
+    this.props.processForm(day).then(this.props.history.push(`/days`));
   }
 
   render() {
@@ -30,8 +30,12 @@ class DayForm extends React.Component {
           {/* rating */}
           <label>Rating</label>
           {/* dropdown  */}
-          <select id="rating" value={this.props.rating}>
-            <option value="" disabled>
+          <select
+            id="rating"
+
+            //value={this.props.rating}
+          >
+            <option value="" onChange={this.update("rating")}>
               --How bad was your craving today--
             </option>
             <option value="1">1</option>
@@ -46,6 +50,7 @@ class DayForm extends React.Component {
             id="comment"
             placeholder="Enter text here"
             value={this.props.comment}
+            onChange={this.update("comment")}
           ></textarea>
           {/* conditional button  */}
           <button type="submit">{this.props.buttonText}</button>
