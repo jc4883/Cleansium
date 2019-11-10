@@ -29,7 +29,7 @@ class Splash extends React.Component {
       return <Redirect to="/login" />;
     } else {
       return (
-        <nav className="splash-page">
+        <div className="splash-page">
           <header>
             <div className="logo">
               <h1>Title</h1>
@@ -40,7 +40,7 @@ class Splash extends React.Component {
           {/* <div className="root-page-text">
             <button onClick={this.handleSignup}>Give it a Try</button>
           </div> */}
-        </nav>
+        </div>
       );
     }
   }
