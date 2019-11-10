@@ -1693,14 +1693,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteDay", function() { return deleteDay; });
 var fetchDays = function fetchDays() {
   return $.ajax({
-    method: 'GET',
-    url: '/api/days'
+    method: "GET",
+    url: "/api/days"
   });
 };
 var createDay = function createDay(day) {
   return $.ajax({
     method: "POST",
-    url: "api/day",
+    url: "api/days",
     data: {
       day: day
     }
