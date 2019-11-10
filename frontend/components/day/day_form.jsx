@@ -27,11 +27,12 @@ class DayForm extends React.Component {
       user_id: this.props.currentUser.id
     });
 
-    this.props.processForm(dayWithUserId);
+    this.props
+      .processForm(dayWithUserId)
+      .then(this.props.history.push(`/days`));
   }
 
   render() {
-    debugger;
     return (
       <div>
         <form className="day-show-form" onSubmit={this.handleSubmit}>
@@ -40,12 +41,10 @@ class DayForm extends React.Component {
           {/* dropdown  */}
           <select
             id="rating"
-
-            //value={this.props.rating}
+            onChange={this.update("rating")}
+            value={this.props.rating}
           >
-            <option value="" onChange={this.update("rating")}>
-              --How bad was your craving today--
-            </option>
+            <option value="">--How bad was your craving today--</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
