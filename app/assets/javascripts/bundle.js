@@ -606,7 +606,7 @@ function (_React$Component) {
         id: "comment",
         value: this.state.comment,
         onChange: this.update("comment"),
-        placeholder: "How did you ate health consciously today?",
+        placeholder: "Did you eat health consciously today?",
         cols: "30",
         rows: "10"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1307,7 +1307,7 @@ function (_React$Component) {
 
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
-      var cutPng = file.name.slice(0, -4); //get photo url even before photo is uploaded
+      var cutPng = file.name; //get photo url even before photo is uploaded
 
       fileReader.onloadend = function () {
         _this2.setState({
@@ -1365,29 +1365,27 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "docs-index-form-title-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Title...",
         id: "docs-index-form-title",
         type: "text",
         onChange: this.handleTitle,
         value: this.state.title
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, ".png")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "doc-notes-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        placeholder: "Add any notes here...",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Notes...",
         id: "docs-index-form-description",
         type: "text",
         onChange: this.handleDescription,
         value: this.state.description
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "docs-index-form-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "docs-index-form-post-button",
-        type: "image",
-        src: window.post_to_the_project
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "docs-index-form-post-button"
+      }, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "docs-index-form-cancel-button",
         onClick: this.handleCancel
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.discard_changes
-      })))));
+      }, "Cancel"))));
     }
   }]);
 
@@ -1469,11 +1467,9 @@ function (_React$Component) {
         src: this.photoUpload.photoUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "doc-item-title"
-      }, this.photoUpload.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "border-boi"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Title:"), " ", this.photoUpload.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         id: "doc-item-description"
-      }, this.photoUpload.description));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Notes:"), " ", this.photoUpload.description));
     }
   }]);
 

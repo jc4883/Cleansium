@@ -92,7 +92,7 @@ class CreateDayForm extends React.Component {
             id="comment"
             value={this.state.comment}
             onChange={this.update("comment")}
-            placeholder="How did you ate health consciously today?"
+            placeholder="Did you eat health consciously today?"
             cols="30"
             rows="10">
           </textarea>

@@ -12,14 +12,13 @@
 }
 
 #docs-index-form-html {
-  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px dashed rgba(0,0,0,0.15);
   border-radius: 0.6rem;
   padding: 15px;
+  background-color: lightsteelblue;
 }
 
 #form-excluding-submit-button {
@@ -28,8 +27,6 @@
 
   width: 650px;
   border-radius: 0.5rem;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 5px 20px rgba(0,0,0,0.05);
-
 }
 
 #form-excluding-submit-button input {
@@ -64,6 +61,11 @@
     font-weight: 700;
     padding: 9px;
     width: 380px !important;
+      font-size: 16px;
+  font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+  color: #283c46;
+  font-weight: 400;
+
 }
 
 #docs-index-form-description {
@@ -72,9 +74,9 @@
   border-radius: 0.4rem;
   line-height: 1.5;
   font-weight: 700;
-  font-size: 16px;
   
   box-sizing: border-box;
+  font-size: 16px;
   font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
   color: #283c46;
   font-weight: 400;
@@ -117,9 +119,10 @@
   align-items: center;
   flex-direction: row;
   padding-top: 20px;
-  position: relative;
   right: 150px;
   outline: none;
+  width: 23vh;
+  justify-content: space-between;
 }
 
 #docs-index-form-buttons img {
@@ -136,4 +139,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#docs-index-form-post-button {
+  background-color: steelblue;
+  border: none;
+  padding: 10px;
+  padding-left: 17px;
+  padding-right: 17px;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#docs-index-form-cancel-button {
+  background-color: indianred;
+  outline: none;
+  border: none;
+  padding: 10px;
+  padding-left: 17px;
+  padding-right: 17px;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
 }

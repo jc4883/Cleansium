@@ -30,7 +30,7 @@ class NewPhotoForm extends React.Component {
   handleFile(e) {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
-    const cutPng = file.name.slice(0, -4); 
+    const cutPng = file.name; 
     //get photo url even before photo is uploaded
     fileReader.onloadend = () => {
       this.setState({photoFile: file, photoUrl: fileReader.result, title: cutPng});
@@ -73,12 +73,10 @@ class NewPhotoForm extends React.Component {
 
             <div id="docs-index-form-inputs">
               <div id="docs-index-form-title-container">
-                <input id="docs-index-form-title" type="text" onChange={this.handleTitle} value={this.state.title} />
-                <h2>.png</h2>
+                <input placeholder="Title..." id="docs-index-form-title" type="text" onChange={this.handleTitle} value={this.state.title} />
               </div>
               <div id="doc-notes-div">
-                <h2>Notes</h2>
-                <input placeholder="Add any notes here..." id="docs-index-form-description" type="text" onChange={this.handleDescription} value={this.state.description} />
+                <input placeholder="Notes..." id="docs-index-form-description" type="text" onChange={this.handleDescription} value={this.state.description} />
               </div>
             </div>
 
@@ -86,10 +84,8 @@ class NewPhotoForm extends React.Component {
 
     
           <div id="docs-index-form-buttons">
-            <input id="docs-index-form-post-button" type="image" src={window.post_to_the_project}/>
-            <div onClick={this.handleCancel}>
-              <img src={window.discard_changes}/>
-            </div>
+            <button id="docs-index-form-post-button">Save</button>
+            <button id="docs-index-form-cancel-button" onClick={this.handleCancel}>Cancel</button>
           </div>
             
         </form>
