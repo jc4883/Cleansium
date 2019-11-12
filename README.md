@@ -1,6 +1,8 @@
 # README
 
-Cleansium is a calendar web application to challenges users to build healthier dietary habits over four weeks. It is created using **React**, **Redux**, **Ruby on Rails**, **PostgreSQL**, and **Google Cloud Storage**.
+Cleansium is a calendar web application that challenges users to build healthier dietary habits over four weeks. It is created using **React**, **Redux**, **Ruby on Rails**, **PostgreSQL**, and **Google Cloud Storage**.
+
+Check out the live version [here](https://cleansium.herokuapp.com/).
 
 ## Inspiration
 
