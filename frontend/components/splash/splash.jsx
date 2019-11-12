@@ -39,9 +39,9 @@ class Splash extends React.Component {
           <img class="vege-background" src={window.background}/>
           <div className="root-page-text" >
             <h1>
-              We're glad you could make it.
+              Welcome! start your healthier lifestyle here.
                     <br />
-              Stay as long as you need
+              Track you diet over 4 weeks.
             </h1>
 
             <p>

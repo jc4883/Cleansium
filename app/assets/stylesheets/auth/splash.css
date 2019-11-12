@@ -40,10 +40,10 @@ nav.login-signup > * {
 }
 
 .root-page-text > button {
-    background-color: mediumseagreen;
+    background-color: skyblue;
     /* background-size: cover; */
-    color: tan;
-    border: 2px solid tan;
+    color: darkblue;
+    border: 2px solid darkblue;
     padding: 8px 27px;
     box-shadow: 0 0 32px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: .2s;
@@ -52,9 +52,9 @@ nav.login-signup > * {
 }
 
 .root-page-text >button:hover {
-    color: mediumseagreen;
-    background-color: tan;
-    border: 2px solid mediumseagreen;
+    color: skyblue;
+    background-color: darkblue;
+    border: 2px solid skyblue;
     transition: .2s;
     transform: scale(1.1);
 }

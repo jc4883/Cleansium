@@ -1990,7 +1990,7 @@ function (_React$Component) {
           src: window.background
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "root-page-text"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "We're glad you could make it.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Stay as long as you need"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Trying to be healthier?"), "\xA0 40% of American adults are obese, and we think ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "fast foods aren't helping. \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Try Cleansium:"), " Feel livelier, stronger, better.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Try our 4 week challenge."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome! start your healthier lifestyle here.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Track you diet over 4 weeks."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Trying to be healthier?"), "\xA0 40% of American adults are obese, and we think ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "fast foods aren't helping. \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Try Cleansium:"), " Feel livelier, stronger, better.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Try our 4 week challenge."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.handleSignup
         }, "Give Cleansium a Try")));
       }
@@ -35257,7 +35257,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
