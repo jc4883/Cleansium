@@ -2,6 +2,8 @@
 
 Cleansium is a calendar web application to challenges users to build healthier dietary habits over four weeks. It is created using **React**, **Redux**, **Ruby on Rails**, **PostgreSQL**, and **Google Cloud Storage**.
 
+Check out the live version [here](https://cleansium.herokuapp.com/).
+
 ## Inspiration
 
 In the United States today, nearly 40% of adults over the age of 20 are obese. Everyone know the consequences of obesity, including increased risk to cancer, heart failure, or diabetes, but it's difficult to make the commitment to eating healthy. Personally, living alone in New York City, I've found that it's so much easier to eat junk food—advertisements and stores for it are everywhere. Cleansium works to start the process of practicing a better diet.
