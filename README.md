@@ -14,7 +14,7 @@ Cleansium displays an index of all of the days in the four weeks. Each day is co
 
 This is what the calendar interface looks like:
 
-[gif of calendar]
+![](days_index_demo.gif)
 
 A technical achievement in implementing the calendar was only creating day entries to the database where a user has logged her progress. This meant creating a day index item regardless of whether an entry in the database existed, and populating a day only if the data existed in the backend for it. Here is a code snippet of the function used to populate an array of all the day index items:
 
@@ -58,7 +58,7 @@ Using the array of DOM elements in `dayList`, I used a simple `.map()` to displa
 
 Cleansium deploys Google Cloud Storage using FormData API to allow users to post what they ate each day. Utilizing Google Cloud Storage reduces the server load and allows users to upload and view large image files. Here is what that looks like:
 
-[gif of uploading]
+![](photo_upload_demo.gif)
 
 I implemented Google Cloud Storage using the google-cloud-storage Rails gem. The real trick to the implementation was to connect Rails' Active Storage to an external cloud storage service by changing the storage.yml configurations as follows:
 
